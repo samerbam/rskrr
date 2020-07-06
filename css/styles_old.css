@@ -1,0 +1,108 @@
+body {
+	font-family: 'Share Tech Mono';
+	background-color: #222;
+	margin: 0;
+	padding: 0;
+}
+
+
+nav {
+	margin-top: 0px;
+    padding: 15px;
+	border-bottom: 1px;
+	border-bottom-color: #444;
+	border-bottom-style: dotted;
+	vertical-align: middle;
+/*		line-height: 1;*/
+
+
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+/*		line-height: 1;*/
+
+}
+
+nav a {
+/*	margin: 0px 5px 0px 5px;*/
+	margin: 15px;
+	color: white;
+	text-decoration: none;
+	vertical-align: middle;
+	line-height: 1;
+	padding-left: 4px;
+	padding-right: 4px;
+	position: relative;
+	display: flex;
+	vertical-align: middle;
+}
+
+/*
+a:hover {
+	text-decoration: underline !important;
+	color:#aaa;
+	font-weight: bold;
+}
+*/
+a:hover::before {
+	content: '[';
+	position: absolute;
+    left: -4px;
+  display: flex;
+  align-items: center;
+	vertical-align: middle;
+	
+/*
+	vertical-align: bottom;
+	line-height: 1;
+*/
+}
+
+a:hover::after {
+	content: ']';
+	position: absolute;
+    right: -4px;
+/*	vertical-align: middle;*/
+/*	line-height: 1;*/
+  display: flex;
+  align-items: center;
+	vertical-align:middle;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-left ul li {
+    float: left;
+}
+
+.nav-right ul li {
+    float: right;
+}
+
+/*
+.underline:hover {
+	text-decoration: underline;
+}
+*/
+
+#logo {
+	font-size: 22px;
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+main {
+	color: white;
+	padding: 20%		
+}

@@ -1,0 +1,1 @@
+//Attempting to use as little JS as possible - both for browser support and page load times.
