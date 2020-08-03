@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+
+	  <title>projects - rskrr</title>
+	  <meta name="description" content="rskrr">
+	  <meta name="author" content="Sam">
+
+		
+		<link href='https://fonts.googleapis.com/css?family=Share Tech Mono' rel='stylesheet'>
+		<link rel="stylesheet" href="css/styles.css">
+<!--		<link rel="stylesheet" href="css/dropdown.js">-->
+
+		</head>
+
+	<body>
+							<noscript>
+				Sorry, this page only works with javascript enabled.
+				If you still need support please email r (dot) sam (dot) ryan (at) gmail (dot) com.
+			</noscript>
+		
+		<header>
+			<span class="logo"><a class="logo" href="/">rskrr</a></span>
+			<nav>
+				<ul class="nav__links">
+					<li><a href="/services.html">Services</a></li>
+					<li><a href="/projects.html">Projects</a></li>
+					<li><a href="https://github.com/samerbam">Github</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main id="jscript_show" style="display:none">
+		
+			<h1>Tech Support</h1>
+			
+
+			
+			<!-- Typeform -->
+<!--			<a class="typeform-share link aHover" href="https://form.typeform.com/to/Ir14Mihd" data-mode="popup" style="color: #0088a9;text-decoration:none;font-size:20px;" data-submit-close-delay="10" target="_blank">Click Here </a> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>-->
+			<!-- {"name": "Sam Ryan","device": "iPhone","issue": "Will Not Turn On.","contact_method": "Email","contact_details": "example@example.com"} -->
+<!--			<form id="tech-form" method="post" name="tech-form">-->
+			<form id="tech-form" method="post" name="tech-form" action="https://tech-form.imsam.ca" target="dummyframe">
+<!--				<div id="tech-form">-->
+					<label><h3 style="display:inline;">Full Name:</h3></label>
+					<input name="name" id="full-name"><br>
+
+					<div class="paddingDiv">
+						<label>Device:</label>
+						<div class="dropdown">
+							<input class="hiddenInput" name="device" value="">
+							<button type="button" onclick="myFunction(this.dataset.id)" class="dropbtn" data-id="1">Choose</button>
+							<div id="myDropdown_1" class="dropdown-content" data-id="1">
+								<a href="#home" onclick="changeSelection(this)">iPhone</a>
+								<a href="#about" onclick="changeSelection(this)">Mac</a>
+								<a href="#contact" onclick="changeSelection(this)">Windows PC</a>
+								<a href="#contact" onclick="changeSelection(this)">Android Phone</a>
+								<a href="#contact" onclick="changeSelection(this)">Other</a>
+							</div>
+						</div>
+					</div>
+
+					<label><h3>Issue: </h3></label>
+					<textarea name="issue" class="expandableTextArea" ></textarea><br>
+
+					<label><b>Prefered Contact Method:</b></label>
+					<div class="dropdown">
+						<input class="hiddenInput" id="pContact" name="pContact" value="">
+						<button type="button" onclick="myFunction(this.dataset.id)" class="dropbtn" data-id="2">Choose</button>
+						<div id="myDropdown_2" class="dropdown-content" data-id="2">
+							<a href="#home" onclick="changeSelection(this)">Email</a>
+							<a href="#about" onclick="changeSelection(this)">Phone</a>
+							<a href="#about" onclick="changeSelection(this)">Other</a>
+						</div>
+					</div><br>
+					<div class="paddingDiv">
+						<label><b>Contact Method:</b></label>
+						<input name="contactmethod"><br>
+					</div>
+
+					<div class="h-captcha" data-sitekey="4710c9ec-7707-43e7-a3c5-0f5116f013bc"></div>
+
+					<!-- <button onclick="submit_form()">Submit</button> -->
+					<input id='formSubmit' type="submit" value="Submit">
+
+<!--				</div>-->
+			</form>
+						
+			
+			<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+		</main>
+		
+		<footer class="footer">
+			© 2020 Sam Ryan. All Rights Reserved.
+		</footer>
+		
+		<!-- Attempting to use as little JS as possible - both for browser support and page load times -->
+		<script src="js/scripts.js"></script>  <!-- General ui elements on this page. -->
+		 <script src="js/tech-form.js"></script> <!-- Javascript Logic for submittiing the form. -->
+		  <script src="https://hcaptcha.com/1/api.js" async defer></script> <!-- Prevent Form Bot Attacks. -->
+		<!-- Only load this page if javascript is enabled. Unfortunately hCaptcha requires javascript -->
+		<script>window.onload=function(){document.getElementById('jscript_show').style.display='block';}</script>
+
+	</body>
+</html>
