@@ -8,6 +8,33 @@ function myFunction(id) {
 //	console.log('test')
 }
 
+
+function checkBrowser() {
+	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+	var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+	var isIE = /*@cc_on!@*/false || !!document.documentMode;
+	var isEdge = !isIE && !!window.StyleMedia;
+	var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+	var isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
+	var isBlink = (isChrome || isOpera) && !!window.CSS;
+	
+	var browserList = {
+		"Opera": isOpera,
+		"Firefox": isFirefox,
+		"Safari": isSafari,
+		"IE": isIE,
+		"Edge": isEdge,
+		"Chrome": isChrome,
+		"EdgeChromium": isEdgeChromium,
+		"Blink": isBlink
+	}
+	
+}
+
+
+
+
 //function changeSelection(elem) {
 //	
 //	[].forEach.call(document.getElementsByClassName('dropBtn'), function (el) {
@@ -61,10 +88,77 @@ function OnInput() {
 }
 
 
+function clearSelection() {
+    var sel;
+    if ( (sel = document.selection) && sel.empty ) {
+        sel.empty();
+    } else {
+        if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        }
+        var activeEl = document.activeElement;
+        if (activeEl) {
+            var tagName = activeEl.nodeName.toLowerCase();
+            if ( tagName == "textarea" || (tagName == "input" && activeEl.type == "text") ) {
+//				continue
+                // Collapse the selection to the end
+//                activeEl.selectionStart = activeEl.selectionEnd;
+//				activeEl.selectionEnd = activeEl.selectionStartactiveEl.value.length;
+//				activeEl.selectionStart = activeEl.value.replace(/[^0-9]/g,"").length+3;
+//				activeEl.selectionEnd = activeEl.value.replace(/[^0-9]/g,"").length+3;
+//				activeEl.selectionEnd = activeEl.value.length;
+				var activeEllength = activeEl.value.replace(/[^0-9]/g,"").length
+//				if (activeEllength == 1) {
+//					var iunder = activeEl.value.indexOf("_")
+//					activeEl.selectionStart = activeEllength+
+//					activeEl.selectionEnd = activeEllength
+				/*} else*/ if (activeEllength <= 4) {
+					activeEl.selectionStart = activeEllength+3
+					activeEl.selectionEnd = activeEllength+3
+				} else if (activeEllength <= 7) {
+					activeEl.selectionStart = activeEllength+5
+					activeEl.selectionEnd = activeEllength+5
+				} else if (activeEllength <= 10) {
+					activeEl.selectionStart = activeEllength+6
+					activeEl.selectionEnd = activeEllength+6
+				}
+//				if (activeEl.value[activeEl.selectionStart-1] == "-") {
+//					activeEl.selectionStart = iunder-2
+//					activeEl.selectionEnd = iunder-2
+//					
+//				} else {
+
+//				}
+            }
+        }
+    }
+}
+
+//function clearSelection()
+//{
+//	window.getSelection().removeAllRanges();
+//// if (window.getSelection) {window.getSelection().removeAllRanges();}
+//// else if (document.selection) {document.selection.empty();}
+//}
 
 
 
 //
+
+
+function handleDelete(e, ele) {
+	
+	if (e.key ==="Backspace") {
+		var ele = document.getElementById("phoneNumber")
+		if (ele.value[ele.value.length-1] == "-") {
+			ele.selectionStart = ele.value.length-2
+			ele.selectionEnd = ele.value.length-2
+		}
+		return false
+	} else {
+		return true
+	}
+}
 
 // This code empowers all input tags having a placeholder and data-slots attribute
 document.addEventListener('DOMContentLoaded', () => {
@@ -81,18 +175,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             },
             format = () => {
-                const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
-                    i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
-                    return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
-                });
-                el.value = clean(el.value).join``;
-                el.setSelectionRange(i, j);
-                back = false;
+//				if ((event.originalEvent.isTrusted === true && event.originalEvent.isPrimary === undefined) || event.originalEvent.isPrimary === true) {
+					const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+						i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+						return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
+					});
+					el.value = clean(el.value).join``;
+					el.setSelectionRange(i, j);
+					back = false;
+//				}
             };
+//			format_select = (event) => {
+//				if (e.screenX && e.screenX != 0 && e.screenY && e.screenY != 0) {
+//					const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+//						i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+//						return i<0? prev[prev.length-1]: back_f? prev[i-1] || first: i;
+//					});
+//					el.value = clean(el.value).join``;
+//					el.setSelectionRange(i, j);
+//					back_f = false;
+//				}
+//			};
         let back = false;
+//		let back_f = false;
         el.addEventListener("keydown", (e) => back = e.key === "Backspace");
+//		el.addEventListener("keydown", handleDelete)
         el.addEventListener("input", format);
         el.addEventListener("focus", format);
+//		el.addEventListener("select", format_select);
         el.addEventListener("blur", () => el.value === pattern && (el.value=""));
     }
 });

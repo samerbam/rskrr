@@ -16,6 +16,25 @@ footer{ height:50px; background:PapayaWhip; }
 	display: none;
 }
 
+#phoneNumber {
+	color: #ccc;
+	background-color: #222;
+	border: none;
+	font-size: 1.5em;
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+	     -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+								  supported by Chrome, Edge, Opera and Firefox */
+	font-family: 'Share Tech Mono'
+}
+
+#phoneNumber:focus {
+	color: white;
+}
+
 .expandableTextArea {
 	font-family: 'Share Tech Mono';
 	border-radius: 5px;
