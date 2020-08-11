@@ -88,51 +88,235 @@ function OnInput() {
 }
 
 
-function clearSelection() {
-    var sel;
-    if ( (sel = document.selection) && sel.empty ) {
-        sel.empty();
-    } else {
-        if (window.getSelection) {
-            window.getSelection().removeAllRanges();
-        }
-        var activeEl = document.activeElement;
-        if (activeEl) {
-            var tagName = activeEl.nodeName.toLowerCase();
-            if ( tagName == "textarea" || (tagName == "input" && activeEl.type == "text") ) {
-//				continue
-                // Collapse the selection to the end
-//                activeEl.selectionStart = activeEl.selectionEnd;
-//				activeEl.selectionEnd = activeEl.selectionStartactiveEl.value.length;
-//				activeEl.selectionStart = activeEl.value.replace(/[^0-9]/g,"").length+3;
-//				activeEl.selectionEnd = activeEl.value.replace(/[^0-9]/g,"").length+3;
-//				activeEl.selectionEnd = activeEl.value.length;
-				var activeEllength = activeEl.value.replace(/[^0-9]/g,"").length
-//				if (activeEllength == 1) {
-//					var iunder = activeEl.value.indexOf("_")
-//					activeEl.selectionStart = activeEllength+
-//					activeEl.selectionEnd = activeEllength
-				/*} else*/ if (activeEllength <= 4) {
-					activeEl.selectionStart = activeEllength+3
-					activeEl.selectionEnd = activeEllength+3
-				} else if (activeEllength <= 7) {
-					activeEl.selectionStart = activeEllength+5
-					activeEl.selectionEnd = activeEllength+5
-				} else if (activeEllength <= 10) {
-					activeEl.selectionStart = activeEllength+6
-					activeEl.selectionEnd = activeEllength+6
-				}
-//				if (activeEl.value[activeEl.selectionStart-1] == "-") {
-//					activeEl.selectionStart = iunder-2
-//					activeEl.selectionEnd = iunder-2
-//					
-//				} else {
+// function clearSelection(e) {
+// 	console.log(e.key);
+//     var sel;
+//     if ( (sel = document.selection) && sel.empty ) {
+//         sel.empty();
+//     } else {
+//         if (window.getSelection) {
+//             window.getSelection().removeAllRanges();
+//         }
+//         var activeEl = document.activeElement;
+//         if (activeEl) {
+//             var tagName = activeEl.nodeName.toLowerCase();
+//             if ( tagName == "textarea" || (tagName == "input" && activeEl.type == "text") ) {
+// //				continue
+//                 // Collapse the selection to the end
+// //                activeEl.selectionStart = activeEl.selectionEnd;
+// //				activeEl.selectionEnd = activeEl.selectionStartactiveEl.value.length;
+// //				activeEl.selectionStart = activeEl.value.replace(/[^0-9]/g,"").length+3;
+// //				activeEl.selectionEnd = activeEl.value.replace(/[^0-9]/g,"").length+3;
+// //				activeEl.selectionEnd = activeEl.value.length;
+// 				var activeEllength = activeEl.value.replace(/[^0-9]/g,"").length
+// //				if (activeEllength == 1) {
+// //					var iunder = activeEl.value.indexOf("_")
+// //					activeEl.selectionStart = activeEllength+
+// //					activeEl.selectionEnd = activeEllength
+// 				/*} else*/ if (activeEllength <= 4) {
+// 					activeEl.selectionStart = activeEllength+3
+// 					activeEl.selectionEnd = activeEllength+3
+// 				} else if (activeEllength <= 7) {
+// 					activeEl.selectionStart = activeEllength+5
+// 					activeEl.selectionEnd = activeEllength+5
+// 				} else if (activeEllength <= 10) {
+// 					activeEl.selectionStart = activeEllength+6
+// 					activeEl.selectionEnd = activeEllength+6
+// 				}
+// //				if (activeEl.value[activeEl.selectionStart-1] == "-") {
+// //					activeEl.selectionStart = iunder-2
+// //					activeEl.selectionEnd = iunder-2
+// //					
+// //				} else {
 
-//				}
-            }
-        }
-    }
+// //				}
+//             }
+//         }
+//     }
+// }
+
+
+// function replaceAt(index, replacement) {
+// 	return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+// }
+
+String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
+
+function indexOfLastDigit(input) {
+
+  let numsOnly = input.replace(/\D/g, "")
+  return input.lastIndexOf(numsOnly.slice(-1))
+
+  // let i = input.length;
+  // for (; input[i] >= '0' && input[i] <= '9'; i--);
+  // return i == -1 ? -1 : i;
+
+  // let i = input.length;
+  // console.log("here")
+  // for (; input[i] < '0' || input[i] > '9'; i--);
+  // 	console.log('??')
+  // return i == -1 ? -1 : i;
+}
+
+function phone_mask(event) {
+
+	const keyPressed = event.key
+	const el = document.getElementById("phoneNumber")
+	var placeholder = el.placeholder
+	const digits = el.value.replace(/[^0-9]/g,"").length
+
+	if (el.value == "") {
+		el.value = placeholder
+	}
+	if (digits == 0) {
+		el.value = placeholder
+	}
+
+	const nextLoc = el.value.indexOf("_")
+
+
+
+	// el.value.replaceAt(nextLoc, keyPressed)
+	// var temp = el.value
+	// console.log(temp)
+	// console.log(nextLoc)
+	// temp = temp.replaceAt(nextLoc, keyPressed)
+	// console.log(temp)
+
+
+	if ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 9 || event.keyCode == 10 || event.keyCode == 13 || event.keyCode == 116 || event.keyCode == 46 || (event.keyCode <= 40 && event.keyCode >= 37)) {
+		if (nextLoc != -1) {
+			el.value = el.value.replaceAt(nextLoc, keyPressed)
+			el.setSelectionRange(nextLoc+1,nextLoc+1)
+		}
+	}
+	// console.log(temp)
+	// console.log(keyPressed)
+	// temp[nextLoc] = keyPressed
+	// 	console.log(temp)
+
+	// el.value = temp
+	// console.log(el.value)
+	// el.value[nextLoc] = keyPressed
+
+	// var hashes = (placeholder.split("_").length-1)
+
+
+
+
+
+	/*
+	 * charCode [48,57] 	Numbers 0 to 9
+	 * keyCode 46  			"delete"
+	 * keyCode 9  			"tab"
+	 * keyCode 13  			"enter"
+	 * keyCode 116 			"F5"
+	 * keyCode 8  			"backscape"
+	 * keyCode 37,38,39,40	Arrows
+	 * keyCode 10			(LF)
+	 */
+	// return (event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 9 || event.keyCode == 10 || event.keyCode == 13 || event.keyCode == 8 || event.keyCode == 116 || event.keyCode == 46 || (event.keyCode <= 40 && event.keyCode >= 37) ? true : false
+	event.preventDefault()
+	return false
+}
+
+function onDelete(event) {
+		const el = document.getElementById("phoneNumber")
+
+	if (event.keyCode == 8) {
+		let d = indexOfLastDigit(el.value)
+		if (d>1) {
+			el.value = el.value.replaceAt(d, "_")
+			el.setSelectionRange(d,d)
+		}
+		event.preventDefault()
+	}
+}
+
+function tabFocus(e) {
+	var el = document.getElementById("phoneNumber")
+	if ((e.keyCode ? e.keyCode : e.which)) {
+		if (el.value == "") {
+			el.value = el.placeholder
+		}
+		var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
+		el.setSelectionRange(i, i)
+	}
+}
+
+function emptyFill() {
+	var el = document.getElementById("phoneNumber")
+	var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
+	el.setSelectionRange(i, i)
+	if (el.value == "") {
+		el.value = el.placeholder
+	}
+}
+
+document.getElementById("phoneNumber").onkeypress = phone_mask;
+document.getElementById("phoneNumber").onkeydown = onDelete;
+document.getElementById("phoneNumber").onkeyup = tabFocus;
+document.getElementById("phoneNumber").onclick = emptyFill;
+
+
+/**
+ * charCode [48,57] 	Numbers 0 to 9
+ * keyCode 46  			"delete"
+ * keyCode 9  			"tab"
+ * keyCode 13  			"enter"
+ * keyCode 116 			"F5"
+ * keyCode 8  			"backscape"
+ * keyCode 37,38,39,40	Arrows
+ * keyCode 10			(LF)
+ */
+// function validate_int(myEvento) {
+//   if ((myEvento.charCode >= 48 && myEvento.charCode <= 57) || myEvento.keyCode == 9 || myEvento.keyCode == 10 || myEvento.keyCode == 13 || myEvento.keyCode == 8 || myEvento.keyCode == 116 || myEvento.keyCode == 46 || (myEvento.keyCode <= 40 && myEvento.keyCode >= 37)) {
+//     dato = true;
+//       // myEvento.preventDefault()
+
+//   } else {
+//     dato = false;
+//   }
+//   return dato;
+// }
+
+
+// function phone_number_mask(event) {
+//   event.preventDefault()
+//   var myMask = "(___) ___-____";
+//   var myCaja = document.getElementById("phoneNumber");
+//   var myText = "";
+//   var myNumbers = [];
+//   var myOutPut = ""
+//   var theLastPos = 1;
+//   myText = myCaja.value;
+//   //get numbers
+//   for (var i = 0; i < myText.length; i++) {
+//     if (!isNaN(myText.charAt(i)) && myText.charAt(i) != " ") {
+//       myNumbers.push(myText.charAt(i));
+//     }
+//   }
+//   //write over mask
+//   for (var j = 0; j < myMask.length; j++) {
+//     if (myMask.charAt(j) == "_") { //replace "_" by a number 
+//       if (myNumbers.length == 0)
+//         myOutPut = myOutPut + myMask.charAt(j);
+//       else {
+//         myOutPut = myOutPut + myNumbers.shift();
+//         theLastPos = j + 1; //set caret position
+//       }
+//     } else {
+//       myOutPut = myOutPut + myMask.charAt(j);
+//     }
+//   }
+//   document.getElementById("phoneNumber").value = myOutPut;
+//   document.getElementById("phoneNumber").setSelectionRange(theLastPos, theLastPos);
+// }
+
+// document.getElementById("phoneNumber").onkeypress = validate_int;
+// document.getElementById("phoneNumber").onkeyup = phone_number_mask;
 
 //function clearSelection()
 //{
@@ -146,66 +330,70 @@ function clearSelection() {
 //
 
 
-function handleDelete(e, ele) {
+// function handleDelete(e, ele) {
 	
-	if (e.key ==="Backspace") {
-		var ele = document.getElementById("phoneNumber")
-		if (ele.value[ele.value.length-1] == "-") {
-			ele.selectionStart = ele.value.length-2
-			ele.selectionEnd = ele.value.length-2
-		}
-		return false
-	} else {
-		return true
-	}
-}
+// 	if (e.key ==="Backspace") {
+// 		var ele = document.getElementById("phoneNumber")
+// 		if (ele.value[ele.value.length-1] == "-") {
+// 			ele.selectionStart = ele.value.length-2
+// 			ele.selectionEnd = ele.value.length-2
+// 		}
+// 		return false
+// 	} else {
+// 		return true
+// 	}
+// }
 
 // This code empowers all input tags having a placeholder and data-slots attribute
-document.addEventListener('DOMContentLoaded', () => {
-    for (const el of document.querySelectorAll("[placeholder][data-slots]")) {
-        const pattern = el.getAttribute("placeholder"),
-            slots = new Set(el.dataset.slots || "_"),
-            prev = (j => Array.from(pattern, (c,i) => slots.has(c)? j=i+1: j))(0),
-            first = [...pattern].findIndex(c => slots.has(c)),
-            accept = new RegExp(el.dataset.accept || "\\d", "g"),
-            clean = input => {
-                input = input.match(accept) || [];
-                return Array.from(pattern, c =>
-                    input[0] === c || slots.has(c) ? input.shift() || c : c
-                );
-            },
-            format = () => {
-//				if ((event.originalEvent.isTrusted === true && event.originalEvent.isPrimary === undefined) || event.originalEvent.isPrimary === true) {
-					const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
-						i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
-						return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
-					});
-					el.value = clean(el.value).join``;
-					el.setSelectionRange(i, j);
-					back = false;
-//				}
-            };
-//			format_select = (event) => {
-//				if (e.screenX && e.screenX != 0 && e.screenY && e.screenY != 0) {
-//					const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
-//						i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
-//						return i<0? prev[prev.length-1]: back_f? prev[i-1] || first: i;
-//					});
-//					el.value = clean(el.value).join``;
-//					el.setSelectionRange(i, j);
-//					back_f = false;
-//				}
-//			};
-        let back = false;
-//		let back_f = false;
-        el.addEventListener("keydown", (e) => back = e.key === "Backspace");
-//		el.addEventListener("keydown", handleDelete)
-        el.addEventListener("input", format);
-        el.addEventListener("focus", format);
-//		el.addEventListener("select", format_select);
-        el.addEventListener("blur", () => el.value === pattern && (el.value=""));
-    }
-});
+// document.addEventListener('DOMContentLoaded', () => {
+// 	// console.error("Here!")
+//     for (const el of document.querySelectorAll("[placeholder][data-slots]")) {
+//         const pattern = el.getAttribute("placeholder"),
+//             slots = new Set(el.dataset.slots || "_"),
+//             prev = (j => Array.from(pattern, (c,i) => slots.has(c)? j=i+1: j))(0),
+//             first = [...pattern].findIndex(c => slots.has(c)),
+//             accept = new RegExp(el.dataset.accept || "\\d", "g"),
+//             clean = input => {
+//             	console.log("clean")
+//                 input = input.match(accept) || [];
+//                 return Array.from(pattern, c =>
+//                     input[0] === c || slots.has(c) ? input.shift() || c : c
+//                 );
+//             },
+//             format = () => {
+//             	console.log("format")
+// //				if ((event.originalEvent.isTrusted === true && event.originalEvent.isPrimary === undefined) || event.originalEvent.isPrimary === true) {
+// 					const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+// 						i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+// 						return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
+// 					});
+// 					el.value = clean(el.value).join``;
+// 					el.setSelectionRange(i, j);
+// 					back = false;
+// //				}
+//             };
+// //			format_select = (event) => {
+// //				if (e.screenX && e.screenX != 0 && e.screenY && e.screenY != 0) {
+// //					const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+// //						i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+// //						return i<0? prev[prev.length-1]: back_f? prev[i-1] || first: i;
+// //					});
+// //					el.value = clean(el.value).join``;
+// //					el.setSelectionRange(i, j);
+// //					back_f = false;
+// //				}
+// //			};
+//         let back = false;
+// //		let back_f = false;
+//         el.addEventListener("keydown", (e) => back = e.key === "Backspace");
+// //		el.addEventListener("keydown", handleDelete)
+//         el.addEventListener("input", format);
+//         el.addEventListener("focus", format);
+// 		el.addEventListener("keydown", clearSelection);
+// 		// el.onselect = clearSelection;
+//         el.addEventListener("blur", () => el.value === pattern && (el.value=""));
+//     }
+// });
 
 //
 //const isNumericInput = (event) => {
