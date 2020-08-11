@@ -1,5 +1,58 @@
+@font-face {
+  font-family: 'dropdown';
+  src: url('fonts/icomoon.eot'); /* IE9 Compat Modes */
+  src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/icomoon.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/icomoon.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/icomoon.svg#icomoon') format('svg'); /* Legacy iOS */
+ font-weight: normal;
+ font-style: normal;
+}
+
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('fonts/ShareTechMono-Regular.eot'); /* IE9 Compat Modes */
+  src: url('fonts/ShareTechMono-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/ShareTechMono-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/ShareTechMono-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/ShareTechMono-Regular.svg#icomoon') format('svg'); /* Legacy iOS */
+ font-weight: normal;
+ font-style: normal;
+ font-weight: 400;
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+.percentage:after {
+  content: "";
+  display: block;
+  background-color: #3d9970;
+}
+.percentage-20:after {
+  width: 20%;
+}
+.percentage-30:after {
+  width: 30%;
+}
+
+/*
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(https://fonts.gstatic.com/s/sharetechmono/v9/J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+*/
+
+
+* {
+	font-family: 'Share Tech Mono', monospace;
+}
+
 body {
-	font-family: 'Share Tech Mono';
+/*	font-family: 'Share Tech Mono';*/
 	background-color: #222;
 	margin: 0;
 	padding: 0;
@@ -28,7 +81,7 @@ footer{ height:50px; background:PapayaWhip; }
 		  -ms-user-select: none; /* Internet Explorer/Edge */
 			  user-select: none; /* Non-prefixed version, currently
 								  supported by Chrome, Edge, Opera and Firefox */
-	font-family: 'Share Tech Mono'
+/*	font-family: 'Share Tech Mono'*/
 }
 
 #phoneNumber:focus {
@@ -104,7 +157,7 @@ header {
 	font-size: 26px;
 	text-decoration: none;
 	color: white;
-	font-family: 'Share Tech Mono';
+/*	font-family: 'Share Tech Mono';*/
 }
 
 .nav__links {
@@ -113,7 +166,7 @@ header {
 }
 
 .nav__links a {
-  font-family: 'Share Tech Mono';
+/*  font-family: 'Share Tech Mono';*/
   font-weight: 500;
 /*  color: #edf0f1;*/
   text-decoration: none;
@@ -241,16 +294,7 @@ main {
 }
 
 
-@font-face {
-  font-family: 'dropdown';
-  src: url('fonts/icomoon.eot'); /* IE9 Compat Modes */
-  src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/icomoon.woff') format('woff'), /* Pretty Modern Browsers */
-       url('fonts/icomoon.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/icomoon.svg#icomoon') format('svg'); /* Legacy iOS */
- font-weight: normal;
- font-style: normal;
-}
+
 
 
 /*.dropdown {*/
@@ -319,7 +363,7 @@ main {
 /* ==========REWORK========== */
 
 button {
-	font-family: inherit;
+/*	font-family: inherit;*/
 	font-size: 100%;
 	line-height: 1.15;
 	margin: 0;
@@ -352,14 +396,14 @@ button,
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  font-family: 'Share Tech Mono';
+/*  font-family: 'Share Tech Mono';*/
   outline:none !important;
 
 /*	display: inline-block;*/
 }
 
 .dropbtn::after {
-	font-family: dropdown;
+	font-family: dropdown !important;
 	content: ' \e900';
 }
 

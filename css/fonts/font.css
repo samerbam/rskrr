@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'J7aHnp1uDWRBEqV98dVQztYldFcLowEF';
+  src: url('J7aHnp1uDWRBEqV98dVQztYldFcLowEF.eot');
+  src: url('J7aHnp1uDWRBEqV98dVQztYldFcLowEF.eot?#iefix') format('embedded-opentype'),
+       url('J7aHnp1uDWRBEqV98dVQztYldFcLowEF.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ShareTechMono-Regular';
+  src: url('ShareTechMono-Regular.svg#ShareTechMono-Regular') format('svg'),
+       url('ShareTechMono-Regular.ttf') format('truetype'),
+       url('ShareTechMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
