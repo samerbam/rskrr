@@ -76,6 +76,7 @@ String.prototype.replaceAt = function(index, replacement) {
 // 		}
 // 	}
 
+
 // 	/*
 // 	 * charCode [48,57]   Numbers 0 to 9
 // 	 * keyCode 46       "delete"
@@ -129,25 +130,25 @@ String.prototype.replaceAt = function(index, replacement) {
 // el.onclick = emptyFill;
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
 
 	var el = document.getElementById("phoneNumber")
 
-	const setSelLoc = () => {
+	const setSelLoc = function() {
 		var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
 		el.setSelectionRange(i, i)
 	},
-	indexOfLastDigit = (input) => {
+	indexOfLastDigit = function(input) {
 		let numsOnly = input.replace(/\D/g, "")
 		return input.lastIndexOf(numsOnly.slice(-1))
 	},
-	emptyFill = () => {
+	emptyFill = function() {
 		setSelLoc()
 		if (el.value == "") {
 			el.value = el.placeholder
 		}
 	},
-	tabFocus = (e) => {
+	tabFocus = function(e) {
 		if ((e.keyCode ? e.keyCode : e.which)) {
 			if (el.value == "") {
 				el.value = el.placeholder
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			setSelLoc()
 		}
 	},
-	onDelete = (event) => {
+	onDelete = function(event) {
 		if (event.keyCode == 8) {
 			let d = indexOfLastDigit(el.value)
 			if (d>1) {
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			event.preventDefault()
 		}
 	},
-	phone_mask = (event) => {
+	phone_mask = function(event) {
 		const keyPressed = event.key
 		const nextLoc = el.value.indexOf("_")
 		if ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 9 || event.keyCode == 10 || event.keyCode == 13 || event.keyCode == 116 || event.keyCode == 46 || (event.keyCode <= 40 && event.keyCode >= 37)) {
