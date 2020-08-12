@@ -1,0 +1,12 @@
+jsPercent
+cssPercent
+htmlPercent
+
+jsPercent
+cssPercent
+htmlPercent
+
+
+
+NOT WORKING BUT STILL:
+echo "$(github-linguist | awk '/%[[:space:]]/ { gsub(/CSS/,"cssPercent",$2); gsub(/HTML/,"htmlPercent",$2); gsub(/JavaScript/,"jsPercent",$2); print $2 " " $1 }')" | awk '/[[:space:]]/ {gsub(/$1/,$2)}' sedReplace
