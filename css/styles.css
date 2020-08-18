@@ -85,6 +85,7 @@ footer{ height:50px; background:PapayaWhip; }
 }
 
 #phoneNumber {
+	/*display: none;*/
 	color: #ccc;
 	background-color: #222;
 	border: none;
@@ -456,6 +457,83 @@ button,
 	background-color: #333;
 }
 
-.show {display: block;}
+.show {display: block !important;}
 
 /* ============================ */
+
+
+
+/*#emailInput:focus {
+	border-bottom: 2px solid #ccc;
+}*/
+/*
+#emailInput {
+	color: #ccc;
+	background: */
+	/*background-color: #222;*/
+/*	border: none;
+	border-bottom: 2px solid #777;
+	font-size: 1.5em;*/
+	/*-webkit-touch-callout: none;  iOS Safari 
+	  -webkit-user-select: none;  Safari 
+	   -khtml-user-select: none;  Konqueror HTML 
+	     -moz-user-select: none;  Old versions of Firefox 
+		  -ms-user-select: none;  Internet Explorer/Edge 
+			  user-select: none;  Non-prefixed version, currently
+								  supported by Chrome, Edge, Opera and Firefox */
+/*	font-family: 'Share Tech Mono'*/
+/*}*/
+
+.input-sizer {
+  display: inline-grid;
+  /*display: none;*/
+/*  vertical-align: top;
+  -webkit-box-align: center;
+          align-items: center;
+  position: relative;
+  border: solid 1px;
+  padding: .25em .5em;
+  margin: 5px;*/
+}
+
+.input-sizer::after,
+.input-sizer input {
+  width: auto;
+  min-width: 1em;
+  /*grid-area: 1 / 2;*/
+  /*font: inherit;*/
+  /*padding: 0.25em;*/
+  /*margin: 0;*/
+  resize: none;
+  background: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.5em;
+}
+.input-sizer input {
+	border-bottom: 2px solid #777;
+}
+
+.input-sizer input:focus {
+	border-bottom: 2px solid white;
+	color: white;
+}
+
+
+.input-sizer::after {
+  content: attr(data-value) " ";
+  visibility: hidden;
+  white-space: pre-wrap;
+  height: 0;
+}
+
+.hidePhone {
+	display:none;
+}
+
+.hideEmail {
+	display:none;
+}

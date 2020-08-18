@@ -8,7 +8,7 @@ function checkBrowser() {
 	var isEdgeChromium = isChrome && (navigator.userAgent.indexOf("Edg") != -1);
 	var isBlink = (isChrome || isOpera) && !!window.CSS;
 	
-	var browserList = {
+	var browserDict = {
 		"Opera": isOpera,
 		"Firefox": isFirefox,
 		"Safari": isSafari,
@@ -18,5 +18,5 @@ function checkBrowser() {
 		"EdgeChromium": isEdgeChromium,
 		"Blink": isBlink
 	}
-	
+	return browserDict
 }

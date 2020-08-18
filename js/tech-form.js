@@ -21,12 +21,35 @@ window.onclick = function(event) {
 	}
 }
 
+function changeDisplay(cName, displayVal) {
+	var ele = document.getElementsByClassName(cName)
+	for (var i = ele.length - 1; i >= 0; i--) {
+		ele[i].style.display = displayVal
+	}
+}
+
 function changeSelection(element) {
 //  document.getElementsByClassName('dropbtn').forEach(ele => {
 	[].forEach.call(document.getElementsByClassName('dropbtn'), function (ele) {
 		if (ele.dataset.id == element.parentElement.dataset.id) {
 			ele.innerHTML = element.innerHTML;
 			ele.parentElement.children[0].value = element.innerHTML;
+			if (ele.dataset.id == 2) {
+				if (element.innerHTML == "Email") {
+					changeDisplay("hidePhone", "none")
+					changeDisplay("hideEmail", "inline-grid")
+					// document.getElementById("hideEmailLabel").style.display = "inline-grid";
+					// document.getElementById("hideEmailInput").style.display = "inline-grid";
+
+				} else if (element.innerHTML == "Phone") {
+					changeDisplay("hideEmail", "none")
+					changeDisplay("hidePhone", "inline-grid")
+
+				} else {
+					changeDisplay("hideEmail", "none")
+					changeDisplay("hidePhone", "none")
+				}
+			}
 //      console.log(ele.parentElement.children)
 		}
 	});
@@ -52,7 +75,6 @@ String.prototype.replaceAt = function(index, replacement) {
 document.addEventListener('DOMContentLoaded', function() {
 
 	var el = document.getElementById("phoneNumber")
-
 	const setSelLoc = function() {
 		var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
 		el.setSelectionRange(i, i)
