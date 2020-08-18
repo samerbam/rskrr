@@ -5,6 +5,10 @@ function myFunction(id) {
 //  console.log('test')
 }
 
+function onSubmit(token) {
+	document.getElementById("tech-form").submit();
+};
+
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
 	var	matches = event.target.matches ? event.target.matches('.dropbtn') : event.target.msMatchesSelector('.dropbtn');
