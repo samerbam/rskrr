@@ -17,9 +17,9 @@
 		</head>
 
 	<body>
-							<noscript>
+			<noscript>
 				Sorry, this page only works with javascript enabled.
-				If you still need support please email r (dot) sam (dot) ryan (at) gmail (dot) com.
+				If you still need support please email r (dot) sam (dot) ryan (at) gmail (dot) com. Replace the "(dot)"s with "."
 			</noscript>
 		
 		<header>
@@ -52,7 +52,7 @@
 						<label>Device:</label>
 						<div class="dropdown">
 							<input class="hiddenInput" name="device" value="">
-							<button type="button" onclick="myFunction(this.dataset.id)" class="dropbtn" data-id="1">Choose</button>
+							<button type="button" onclick="dDownToggle(this.dataset.id)" class="dropbtn" data-id="1">Choose</button>
 							<div id="myDropdown_1" class="dropdown-content" data-id="1">
 								<a href="#home" onclick="changeSelection(this)">iPhone</a>
 								<a href="#about" onclick="changeSelection(this)">Mac</a>
@@ -69,7 +69,7 @@
 					<label><b>Prefered Contact Method:</b></label>
 					<div class="dropdown">
 						<input class="hiddenInput" id="pContact" name="pContact" value="">
-						<button type="button" onclick="myFunction(this.dataset.id)" class="dropbtn" data-id="2">Choose</button>
+						<button type="button" onclick="dDownToggle(this.dataset.id)" class="dropbtn" data-id="2">Choose</button>
 						<div id="myDropdown_2" class="dropdown-content" data-id="2">
 							<a href="#home" onclick="changeSelection(this)">Email</a>
 							<a href="#about" onclick="changeSelection(this)">Phone</a>

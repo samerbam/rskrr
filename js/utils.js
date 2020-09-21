@@ -1,3 +1,5 @@
+
+//Currently unused, Could be useful in the future for *redacted* dashboard.
 function checkBrowser() {
 	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 	var isFirefox = typeof InstallTrigger !== 'undefined';

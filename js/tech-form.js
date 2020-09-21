@@ -1,16 +1,16 @@
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction(id) {
+function dDownToggle(id) { //Old Name: myFunction
+	/* Toggle between showing and hiding dropdown. */
 	document.getElementById("myDropdown_"+id).classList.toggle("show");
 //  console.log('test')
 }
 
 function onSubmit(token) {
+	/* Submit tech-form html form. */
 	document.getElementById("tech-form").submit();
 };
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
+	/* Close the dropdown if the user clicks outside of it. */
 	var	matches = event.target.matches ? event.target.matches('.dropbtn') : event.target.msMatchesSelector('.dropbtn');
 	// if (!event.target.matches('.dropbtn')) {
 	if (!matches) {
@@ -26,6 +26,7 @@ window.onclick = function(event) {
 }
 
 function changeDisplay(cName, displayVal) {
+	/* Change display property of all elements with given cName class to given displayVal value. */
 	var ele = document.getElementsByClassName(cName)
 	for (var i = ele.length - 1; i >= 0; i--) {
 		ele[i].style.display = displayVal
@@ -77,23 +78,32 @@ String.prototype.replaceAt = function(index, replacement) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+	/* Logic for phone number input box. 
+	 * TODO: change from hard coded phoneNumber id to creation of dynamic input fields with placeholders.
+	 */
 
 	var el = document.getElementById("phoneNumber")
 	const setSelLoc = function() {
+		/* Move cursor to last _ in element value. */
 		var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
 		el.setSelectionRange(i, i)
 	},
 	indexOfLastDigit = function(input) {
+		/* Get index of last digit in input. */
 		let numsOnly = input.replace(/\D/g, "")
 		return input.lastIndexOf(numsOnly.slice(-1))
 	},
 	emptyFill = function() {
+		/* If the elements value is empty fill it with placeholder. */
 		setSelLoc()
 		if (el.value == "") {
 			el.value = el.placeholder
 		}
 	},
 	tabFocus = function(e) {
+		/* Prevent selection of all text when using tab to select input box. 
+		 * Moves cursor to last _ in value.
+		 */
 		if ((e.keyCode ? e.keyCode : e.which)) {
 			if (el.value == "") {
 				el.value = el.placeholder
@@ -102,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	},
 	onDelete = function(event) {
+		/* Prevents delection of placeholder text and brings back missing placeholder text when digits are removed. */
 		if (event.keyCode == 8) {
 			let d = indexOfLastDigit(el.value)
 			if (d>1) {
@@ -112,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	},
 	phone_mask = function(event) {
+		/* Only allows certain keys to be pressed. */
 		const keyPressed = event.key
 		const nextLoc = el.value.indexOf("_")
 		if ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 9 || event.keyCode == 10 || event.keyCode == 13 || event.keyCode == 116 || event.keyCode == 46 || (event.keyCode <= 40 && event.keyCode >= 37)) {
