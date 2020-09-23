@@ -9,6 +9,47 @@
  font-style: normal;
 }
 
+.linkbtn {
+  /*background-color: #4CAF50;*/
+  /*color: white;*/
+  /*padding: 16px;*/
+  padding-bottom: 2px;
+  cursor: pointer;
+  /*font-size: 16px;*/
+  /*border: none;*/
+}
+
+.linkdown {
+  position: relative;
+  display: inline-block;
+}
+
+.linkdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  /*min-width: 100px;*/
+  margin-top: 2px;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.linkdown-content a {
+  color: #0088a9;
+  white-space: nowrap;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+/*.linkdown-content a:hover {background-color: #ddd;}*/
+
+.linkdown:hover .linkdown-content {display: block;}
+
+/*.linkdown:hover .linkbtn {background-color: #3e8e41;}*/
+
 
 /* Used in stats.html */
 .Progress {
