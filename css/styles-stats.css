@@ -1,0 +1,31 @@
+/* Used in stats.html */
+.Progress {
+    display: flex;
+    height: 8px;
+    overflow: hidden;
+    background-color: #e1e4e8;
+    border-radius: 6px;
+    outline: 1px solid transparent;
+}
+
+/* Used in stats.html */
+.d-inline {
+	display: inline !important;
+}
+
+/* Used in stats.html */
+.codeBreakdown {
+	background-color: #333;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+/* Used in stats.html */
+.text {
+	line-height: 1em;
+}
+
+/* Used in stats.html */
+.subtext {
+	color: gray;
+}

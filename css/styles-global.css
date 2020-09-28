@@ -1,0 +1,199 @@
+/* transition: all 0.1s ease 0.1s; */
+
+
+* {
+	font-family: 'Share Tech Mono', monospace;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+noscript {
+	color:white;
+}
+
+body {
+/*	font-family: 'Share Tech Mono';*/
+	background-color: #222;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display:flex; 
+	flex-direction:column;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 10%;
+  border-bottom: dotted #454444;
+}
+
+main {
+	color: white;
+	padding: 20%;
+	padding-top: 2.1%;
+	padding-bottom: 0;
+/*	padding-top: 5%;*/
+	line-height: 2;
+	min-height: 100%;
+}
+
+a {
+	/*color: #0088a9;*/
+	/*color: #00BCDE;*/
+	color: #03A9F4;
+}
+
+footer{
+	height:50px;
+	background:white;
+	margin-top:auto; 
+}
+
+.footer {
+	color: white;
+	text-align: center;
+	font-size: 12px;
+	position:absolute;
+/*   bottom: 1%;*/
+/*	padding-top: 1%;*/
+	left: 50%;
+	transform:translateX(-50%);
+	margin-top: -50px;
+}
+
+.logo {
+	margin-right: auto;
+	font-size: 26px;
+	text-decoration: none;
+	color: white;
+/*	font-family: 'Share Tech Mono';*/
+}
+
+/* Adds [ & ] around text. */
+.link-hover:hover::before, .link-hover:focus::before {
+	content: '[';
+	position: absolute;
+	left: -4px;
+}
+
+.link-hover:hover::after, .link-hover:focus::after {
+	content: ']';
+	position: absolute;
+	right: -4px;
+}
+
+/* Nav bar formatting. */
+.nav__links {
+  list-style: none;
+  display: flex;
+}
+
+.nav__links a {
+	font-weight: 500;
+	text-decoration: none;
+	padding-left: 4px;
+	padding-right: 4px;
+	position: relative;
+}
+
+.nav__links li {
+  padding: 0px 20px;
+}
+
+
+/* NAV dropdown */
+.linkbtn {
+	padding-bottom: 2px;
+	cursor: pointer;
+}
+
+.linkdown {
+	position: relative;
+	display: inline-block;
+}
+
+.linkdown-content {
+	display: none;
+	position: absolute;
+	background-color: #333;
+	min-width: 100px;
+	margin-top: 2px;
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.linkdown-content a {
+	/*color: #0088a9;*/
+	white-space: nowrap;
+	padding: 5px;
+	text-decoration: none;
+	display: block;
+}
+
+.linkdown:hover .linkdown-content {
+	display: block;
+}
+
+
+.image {
+	width: 20%;
+	height: 20%;
+	margin-right: 20px;
+	border-radius: 10px;
+}
+
+.project {
+	display: flex;
+	background-color: #333;
+	padding: 10px;
+	border-radius: 15px;
+	margin-bottom: 15px;
+}
+
+.project__link {
+/*	color: white;*/
+	text-decoration: none;
+}
+
+.project__link {
+	padding-left: 4px;
+	padding-right: 4px;
+	left: -4px;
+	position: relative;
+	display: inline-block;
+	color: #03A9F4;
+}
+
+/*.project__link:hover::before {
+	content: '[';
+	position: absolute;
+    left: -4px;
+}
+
+.project__link:hover::after {
+	content: ']';
+	position: absolute;
+    right: -4px;
+}*/
+
+
+.desc {
+	color: #adacac;
+	line-height: 1.5;
+}
+
+/* Trying to remove this */
+#home_page {
+	padding-top: 20%;
+	padding-bottom: 20%;
+}
+
+/* Going to remove this once website is 'live' */
+#coming__soon {
+	text-align: center;
+}

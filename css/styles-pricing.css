@@ -1,0 +1,134 @@
+main {
+	padding: 15%;
+		padding-top: 2.1%;
+
+}
+
+.pricing{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+
+
+.price {
+	/*display: inline-block;*/
+	font-size: 3em;
+	text-align: center;
+	/*margin-bottom: auto;*/
+	/*margin-top: 3vmin;*/
+	left: -2em;
+/*	border-bottom-color: white;
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;*/
+}
+/*
+.price::before {
+	position: absolute;
+	left: -1vmin;
+	content: '$';
+}*/
+
+.pCard {
+	display: flex;
+	flex-direction: column;
+	/*flex-wrap: wrap;*/
+	/*justify-content: center;*/
+	/*color: #03A9F4;*/
+	background-color: #333;
+	border-radius: 15px;
+	width: 40vmin;
+	height: 55vmin;
+	padding: 5px;
+	margin: 5px;
+	-webkit-box-shadow: 0px 0px 1.5px 0px rgba(28,22,28,0.75);
+	-moz-box-shadow: 0px 0px 1.5px 0px rgba(28,22,28,0.75);
+	box-shadow: 0px 0px 1.5px 0px rgba(28,22,28,0.75);
+	/*min-width: 300px;*/
+	/*min-height: 200px;*/
+	transition: all 0.1s ease 0.1s;
+
+}
+
+.pCard:hover {
+	transition: all 0.1s ease 0.1s;
+	-webkit-box-shadow: 0px 15px 15px 0px rgba(28,22,28,0.75);
+	-moz-box-shadow: 0px 15px 15px 0px rgba(28,22,28,0.75);
+	box-shadow: 0px 15px 15px 0px rgba(28,22,28,0.75);
+}
+
+#sCard {
+	color: white;
+	background-color: #03A9F4;
+}
+
+.purchaseButton {
+	/*align-self: flex-end;*/
+	background-color: #333;
+	align-self: center;
+	width: 36vmin;
+	margin-top: auto;
+	margin-bottom: 2vmin;
+	text-decoration: none;
+	border: none;
+	border-radius: 1vmin;
+	color: white;
+	/*margin-left: 2vmin;*/
+	/*margin-right: 2vmin;*/
+	/*width: 100%;*/
+	/*transform:translateX(-50%);*/
+	/*width: vmin;*/
+	height: 5vmin;
+	transition: all 0.1s ease 0.1s;
+	color: #03A9F4;
+	cursor: pointer;
+}
+/*
+.pBut {
+	background-color: #333;
+}
+*/
+.purchaseButton:hover {
+	transition: all 0.1s ease 0.1s;
+	-webkit-box-shadow: 0px 0px 1.5px 0px rgba(28,22,28,0.75);
+	-moz-box-shadow: 0px 0px 1.5px 0px rgba(28,22,28,0.75);
+	box-shadow: 0px 0px 9px 0px rgba(28,22,28,0.75);
+	background-color: #333;
+}
+
+/*.purchaseButton::after {
+	position: relative;
+	right: -8.5vmin;
+	content: '❯';
+	font-size: 0.75em;
+	/*font-weight: 100;*/
+
+.packageTitle {
+	align-self: center;
+	font-size: 1.5em;
+}
+
+.feature {
+	align-self: center;
+	color: white;
+	/*font-weight: 500;*/
+}
+
+/*.regText {
+	color: white;
+}*/
+
+.subtext {
+	color: #888;
+}
+
+.sSubtext {
+	color: #ddd;
+}
+
+.wLink {
+	color: #333;
+}
+
+/* #7915F2 */
