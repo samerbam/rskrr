@@ -20,6 +20,8 @@ body {
 	height: 100%;
 	display:flex; 
 	flex-direction:column;
+	/*font-size: 2.25vmin;*/
+
 }
 
 header {
@@ -33,7 +35,9 @@ header {
 main {
 	color: white;
 	padding: 20%;
+	/*padding: 20vmax;*/
 	padding-top: 2.1%;
+	/*padding-top: 2.1vmax;*/
 	padding-bottom: 0;
 /*	padding-top: 5%;*/
 	line-height: 2;
@@ -44,6 +48,7 @@ a {
 	/*color: #0088a9;*/
 	/*color: #00BCDE;*/
 	color: #03A9F4;
+	cursor: pointer;
 }
 
 footer{
@@ -70,6 +75,18 @@ footer{
 	text-decoration: none;
 	color: white;
 /*	font-family: 'Share Tech Mono';*/
+}
+
+.ulPadding {
+	padding-left: 5vmin;
+}
+
+#exampleSubtext {
+	padding-left: 1vmin;
+}
+
+.para {
+	text-align: center;
 }
 
 /* Adds [ & ] around text. */

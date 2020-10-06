@@ -12,6 +12,9 @@
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/styles-global.css">
 		<link rel="stylesheet" href="css/styles-pricing.css">
+		<link rel="stylesheet" href="css/icons.css">
+		<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
 
 	</head>
 
@@ -22,43 +25,94 @@
 			<nav>
 				<ul class="nav__links">
 					<li><!-- <a href="/services.html">Services</a> -->
-						<div class="linkdown">
-							<a href="/services" class="linkbtn link-hover">Services</a>
+						<a href="/pricing" class="link-hover">Website Design</a>
+<!-- 						<div class="linkdown">
+							<a href="/web" class="linkbtn link-hover">Website Design</a>
 							<div class="linkdown-content">
-								<a href="/web" class="link-hover">Website Support</a>
-								<a href="/tech" class="link-hover">Tech Support</a>
-								<a href="/other-services" class="link-hover">Other</a>
+								<a href="/web-examples" class="link-hover">Website Examples</a>
+								<a href="/pricing" class="link-hover">Pricing</a>
+								<!-- <a href="/other-services" class="link-hover">Other</a> -->
+							<!-- </div> -->
+						<!-- </div> -->
+						<!-- <a href="/web" class="link-hover">Website Design</a> -->
+					</li>
+					<li>
+						<a href="/tech" class="link-hover">Website Support</a>
+					</li>
+					<li>
+						<div class="linkdown">
+							<a href="/projects" class="linkbtn link-hover">Projects</a>
+							<div class="linkdown-content">
+								<a href="/coming-" class="link-hover">Current Project</a>
+								<a href="https://github.com/samerbam" target="_blank" class="link-hover">Github</a>
+								<a href="/stats" class="link-hover">Stats</a>
 							</div>
 						</div>
 					</li>
-					<li><a href="/projects.html" class="link-hover">Projects</a></li>
-					<li><a href="/stats.html" class="link-hover">Stats</a></li>
-					<li><a href="https://github.com/samerbam" target="_blank" class="link-hover">Github</a></li>
+					<!-- <li><a href="/projects.html" class="link-hover">Projects</a></li> -->
+					<!-- <li><a href="/stats.html" class="link-hover">Stats</a></li> -->
+					<!-- <li><a href="https://github.com/samerbam" target="_blank" class="link-hover">Github</a></li> -->
 				</ul>
 			</nav>
 		</header>
 		
 		<main>
+
+
+			<h1>Web Design</h1>
+
+			<p class="para">
+				<del>TODO: Write paragraph that loops back on itself multiple times without actually telling you anything about why you should hire me and why I am the best.</del>
+			</p>
+			<br>
+			<p class="ulPadding">
+				Im not going to try and convince you that im better then everyone else out there, because in reality there are people out there that are better then me. Here is what I can do, you can make your own mind up on weather or not im who you want.
+			</p>
+			<br>
+ 
+			<h1>Example Websites</h1>
+			<p>
+				<span class="subtext" id="exampleSubtext">Here is a list of some examples</span>
+				<br>
+
+				<ul class="ulPadding">
+					<li><a>Wix</a></li>
+					<li><a>Weebly</a></li>
+					<li><a>Squarespace</a></li>
+					<li><a>Wordpress</a></li>
+					<li><a>Custom</a></li>
+				</ul>
+			</p>
+			<br>
 		
 			<h1>Pricing</h1>
-			
 			<div class="pricing">
 				
 				<div class="pCard">
 					<h1 class="packageTitle">Basic</h1>
 					<h2 class="price">$124.90</h1>
 
-
-
-
 					<p class="feature">3 Pages</p>
 					<p class="feature">Wix, Weebly, Squarespace</p>
 					<p class="feature">Email</p>
-					<p class="feature subtextx">$25 Per <a href="#Add-ons">Add-on</a></p>
+					<span class="feature">
+						$25 Per
+						<label for="element-toggle1"><a>Add-on</a></label>
+						<input id="element-toggle1" type="checkbox" />
+						<span id="toggled-element1">
+							<h2>Add-ons</h2>
+							<ul>
+								<li>Page</li>
+								<li>Bot Protection ($0-$200 per month)</li>
+								<li>Mailchimp ($0-$1000+ per month)</li>
+								<li>etc</li>
+							</ul>
+						</span>
+					</span>
 					<p class="feature subtext">$3-$70 Monthly Cost</p>
 
 
-					<button class="purchaseButton pBut">Get Started</button>
+					<button class="purchaseButton pBut" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/imsam-ca/30min?hide_event_type_details=1'});return false;">Get Started</button>
 				</div>
 				<div class="pCard" id="sCard">
 
@@ -69,13 +123,26 @@
 					<p class="feature">5 Pages</p>
 					<p class="feature">Wordpress</p>
 					<p class="feature">Email</p>
-					<p class="feature">$30 per <a href="#Add-ons" class="wLink">Add-on</a></p>
+					<span class="feature">
+						$30 Per
+						<label for="element-toggle2"><a>Add-on</a></label>
+						<input id="element-toggle2" type="checkbox" />
+						<span id="toggled-element2">
+							<h2>Add-ons</h2>
+							<ul>
+								<li>Page</li>
+								<li>Bot Protection ($0-$200 per month)</li>
+								<li>Mailchimp ($0-$1000+ per month)</li>
+								<li>etc</li>
+							</ul>
+						</span>
+					</span>
 					<p class="feature sSubtext">$6-$60 Monthly Cost</p>
 
 <!-- #7915F2 -->
 
 
-					<button class="purchaseButton">Get Started</button>
+					<button class="purchaseButton" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/imsam-ca/30min?hide_event_type_details=1'});return false;">Get Started</button>
 				</div>
 				<div class="pCard">
 					<h1 class="packageTitle">Custom</h1>
@@ -84,21 +151,37 @@
 					<p class="feature">7 Pages</p>
 					<p class="feature">Linode</p>
 					<p class="feature">Email</p>
-					<p class="feature">$35 per <a href="#Add-ons">Add-on</a></p>
+					<span class="feature">
+						$35 Per
+						<label for="element-toggle3"><a>Add-on</a></label>
+						<input id="element-toggle3" type="checkbox" />
+						<span id="toggled-element3">
+							<h2>Add-ons</h2>
+							<ul>
+								<li>Page</li>
+								<li>Bot Protection ($0-$200 per month)</li>
+								<li>Mailchimp ($0-$1000+ per month)</li>
+								<li>etc</li>
+							</ul>
+						</span>
+					</span>
 					<p class="feature subtext">$5-$35 Monthly Cost</p>
 
-
-					<button class="purchaseButton pBut">Get Started</button>
+					
+					<button class="purchaseButton pBut" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/imsam-ca/30min?hide_event_type_details=1'});return false;">Get Started</button>
 				</div>
 
 
 			</div>
 
+<!-- 
+			<br>
+			<br>
+			<br>
+			<br>
 
-			<br>
-			<br>
-			<br>
-			<br>
+
+			</div>
 			
 			<div id="Add-ons">
 
@@ -110,9 +193,9 @@
 					<li>etc</li>
 				</ul>
 
-			</div>
+			</div> -->
 
-			<button onclick="cTest()"></button>
+			<!-- <button onclick="cTest()"></button> -->
 			
 		</main>
 		
@@ -122,9 +205,14 @@
 		</footer>
 		
 		<!-- Attempting to use as little JS as possible - both for browser support and page load times -->
-		<script src="https://js.stripe.com/v3/"></script>
+		<!-- <script src="https://js.stripe.com/v3/"></script> -->
+		<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 		<script src="js/scripts.js"></script>
 
 
 	</body>
 </html>
+
+
+<!-- Calendly link widget begin -->
+<!-- Calendly link widget end -->
