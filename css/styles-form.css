@@ -70,12 +70,29 @@
 }
 
 
+#full-name {
+	background-color: #3d3d3d;
+	color: white;
+	line-height: 1.5em;
+	padding: 0.25em;
+	border-style: solid;
+    border-width: 2px;
+	border-color: #222;
+	border-radius: 5px;
+	outline: none;
+	/*width: 15em;*/
+}
+
+#full-name:focus {
+	border-color: #0088a9;
+}
+
 
 /* ==========REWORK========== */
 
 /*	font-family: inherit;*/
 
-button {
+/*button {
 	font-size: 100%;
 	line-height: 1.15;
 	margin: 0;
@@ -96,7 +113,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-}
+}*/
 
 
 .dropbtn {
@@ -234,4 +251,320 @@ button,
 
 .hideEmail {
 	display:none;
+}
+
+
+/**
+ * 1. The `reverse` animation direction plays the animation backwards
+ *    which makes it start at the stroke offset 100 which means displaying
+ *    no stroke at all and animating it to the value defined in the SVG
+ *    via the inline `stroke-dashoffset` attribute.
+ * 2. Rotate by -90 degree to make the starting point of the
+ *    stroke the top of the circle.
+ * 3. Using CSS transforms on SVG elements is not supported by Internet Explorer
+ *    and Edge, use the transform attribute directly on the SVG element as a
+ * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
+ */
+.circle-chart__circle {
+  animation: circle-chart-fill 1s reverse; /* 1 */ 
+  transform: rotate(-90deg); /* 2, 3 */
+  transform-origin: center; /* 4 */
+  width: 10vw;
+  height: 10vh;
+}
+
+.circle-chart {
+	width: 5vw;
+  	height: 5vw;
+  	/*margin-left: auto;*/
+	/*margin-right: auto;*/
+}
+
+/**
+ * 1. Rotate by -90 degree to make the starting point of the
+ *    stroke the top of the circle.
+ * 2. Scaling mirrors the circle to make the stroke move right
+ *    to mark a positive chart value.
+ * 3. Using CSS transforms on SVG elements is not supported by Internet Explorer
+ *    and Edge, use the transform attribute directly on the SVG element as a
+ * .  workaround (https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/#part-4-internet-explorer-strikes-back).
+ */
+.circle-chart__circle--negative {
+  transform: rotate(-90deg) scale(1,-1); /* 1, 2, 3 */
+}
+
+.circle-chart__info {
+  animation: circle-chart-appear 2s forwards;
+  opacity: 0;
+  transform: translateY(0.3em);
+}
+
+@keyframes circle-chart-fill {
+  to { stroke-dasharray: 0 100; }
+}
+
+@keyframes circle-chart-appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Layout styles only, not needed for functionality */
+/*html {
+  font-family: sans-serif;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+*/
+.grid {
+  display: grid;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 31em) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+#formCompleteBackdrop {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	opacity: 0.5;
+	background-color: #000;
+}
+
+#formCompletePopup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 1.5%;
+
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+	width: 40vw;
+	height: 25vw;
+	background-color: #3453;
+	border-radius: 25px;
+}
+
+
+/*@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}*/
+
+#failureH {
+	display: none;
+	animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+#failureP {
+	display: none;
+	animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+#successH {
+	display: block;
+animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+
+#successP {
+	display: block;
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* This is the submit button styles */
+#sBut {
+  display: block;
+  margin: 0 auto;
+  padding: .6em .8em;
+   /* Font-size is the root value that determines size of spinner parts. Change this to whatever you want and spinner elements will size to match. */
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: .4em;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all .1s;
+  background-color: white;
+border-style: solid;
+border-width: 2px;
+border-color: #222;
+border-radius: 5px;
+}
+
+/* focus/disabled styles, you can change this for accessibility */
+#sBut:focus, #sBut:disabled {
+  outline: none;
+  background: #aaa;
+  border-color: #0088a9;
+}
+
+/* This is the space for the spinner to appear, applied to the button */
+.spin {
+  padding-left: 2.5em !important;
+  display: block !important;
+}
+
+/* position of the spinner when it appears, you might have to change these values */
+.spin .spinner {
+  left: -.6em;
+  top: .4em;
+  width: 2.5em;
+  display: block;
+  position: absolute;
+}
+
+/* spinner animation */
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* The actual spinner element is a pseudo-element */
+.spin .spinner::before {
+  content: "";
+  width: 1.5em; /* Size of the spinner */
+  height: 1.5em; /* Change as desired */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: solid .35em #999; /* Thickness/color of spinner track */
+  border-bottom-color: #555; /* Color of variant spinner piece */
+  animation: .8s linear infinite spinner; /* speed of spinner */
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* optional, but it will affect the size if changed */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@keyframes success {
+  0% {
+     background-color: #aaa;
+  }
+  25% {
+     background-color: #5FC782;
+  }
+  75% {
+     background-color: #5FC782;
+  }
+  100% {
+    background-color: #FFF;
+  }
+}
+
+.success {
+	animation: 1s ease success;
+}
+
+
+@keyframes error {
+  0% {
+     background-color: #aaa;
+  }
+  25% {
+     background-color: #F55949;
+  }
+  75% {
+     background-color: #F55949;
+  }
+  100% {
+    background-color: #FFF;
+  }
+}
+
+.error {
+	animation: 1s ease error;
+}
+
+
+/* generic document styles below */
+/*body {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+main {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+p {
+  text-align: left;
+  padding: 0 20px;
+}
+
+form p {
+  text-align: center;  
+}
+
+fieldset {
+  border-radius: 10px;
+}
+
+code {
+  color: firebrick;
+}
+*/
+
+.h-captcha {
+  border-color: #222 !important;
 }

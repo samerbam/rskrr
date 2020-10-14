@@ -4,10 +4,10 @@ function dDownToggle(id) { //Old Name: myFunction
 //  console.log('test')
 }
 
-function onSubmit(token) {
-	/* Submit tech-form html form. */
-	document.getElementById("tech-form").submit();
-};
+// function onSubmit(token) {
+// 	 Submit tech-form html form. 
+// 	document.getElementById("tech-form").submit();
+// };
 
 window.onclick = function(event) {
 	/* Close the dropdown if the user clicks outside of it. */
@@ -153,3 +153,79 @@ document.addEventListener('DOMContentLoaded', function() {
 	el.onkeyup = tabFocus;
 	el.onclick = emptyFill;
 })
+
+
+
+let btn = document.getElementById('sBut');
+
+btn.addEventListener('click', function () {
+  // form submission starts
+  // button is disabled
+  btn.classList.remove('success');
+  btn.classList.remove('error');
+
+  btn.classList.add('spin');
+  btn.disabled = true;
+  
+  // This disables the whole form via the fieldset
+  // btn.form.firstElementChild.disabled = true;
+  
+  // this setTimeout call mimics some asyncronous action
+  // you would have something else here
+  	var formObj = document.getElementById("tech-form")
+	var xhr = new XMLHttpRequest();
+	// xhr.open("POST", "https://tech-form.imsam.ca"); http://127.0.0.1:8787/
+	xhr.open("POST", "https://tech-form.imsam.ca");
+	xhr.onload = function(event){ 
+	    // alert("Success, server responded with: " + event.target.status); // raw response
+	    // console.log(event.target.status);
+	    btn.blur();
+	    switch (event.target.status) {
+	    	case 200:
+	    		btn.classList.add('success');
+	    		btn.classList.remove('spin');
+	    		btn.disabled = false;
+	    		formObj.reset()
+	    		break;
+	    	default:
+	    		btn.classList.add('error');
+	    		btn.classList.remove('spin');
+	    		btn.disabled = false;
+	    }
+
+	    // btn.classList.add('success');
+	    // btn.classList.remove('spin');
+	    // btn.disabled = false;
+	}; 
+	xhr.onerror = function (event) {
+		// alert("Error, server responded with: " + event.target.response); // raw response\
+		btn.blur();
+		btn.classList.add('error');
+		btn.classList.remove('spin');
+		btn.disabled = false;
+	}
+	xhr.onabort = function (event) {
+		// alert("Abort, server responded with: " + event.target.response); // raw response
+		btn.blur();
+		btn.classList.add('error');
+		btn.classList.remove('spin');
+		btn.disabled = false;
+	}
+	// or onerror, onabort
+	var formData = new FormData(formObj);
+	console.log(formData)
+	xhr.send(formData);
+
+
+  // window.setTimeout(function () {
+  //   // when asyncronous action is done, remove the spinner
+  //   // re-enable button/fieldset
+  //   // btn.classList.add('success');
+  //   btn.classList.add('error');
+
+  //   btn.classList.remove('spin');
+  //   // btn.classList.remove('success');
+  //   btn.disabled = false;
+  //   // btn.form.firstElementChild.disabled = false;
+  // }, 4000);
+}, false);

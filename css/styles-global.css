@@ -57,6 +57,11 @@ footer{
 	margin-top:auto; 
 }
 
+.subtext {
+	color: #888;
+}
+
+
 .footer {
 	color: white;
 	text-align: center;
