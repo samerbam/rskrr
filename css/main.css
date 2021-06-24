@@ -1,0 +1,62 @@
+/* Tailwind css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Start Custom CSS */
+
+.scroll-container {
+    scroll-snap-type: y proximity;
+}
+
+.scroll-child {
+    scroll-snap-align: center;
+}
+
+
+.gradient-text {
+    background: rgba(63,94,251,1);
+    background: -webkit-linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 33%, rgba(63,94,251,1) 66%, rgba(252,70,107,1) 100%);
+    background: -moz-linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 33%, rgba(63,94,251,1) 66%, rgba(252,70,107,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 33%, rgba(63,94,251,1) 66%, rgba(252,70,107,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 33%, rgba(63,94,251,1) 66%, rgba(252,70,107,1) 100%);
+    background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 33%, rgba(63,94,251,1) 66%, rgba(252,70,107,1) 100%);
+    background-size: 400% 400%;
+    -webkit-animation: gradBg 60s linear infinite;
+    -moz-animation: gradBg 60s linear infinite;
+    animation: gradBg 60s linear infinite;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+@-webkit-keyframes gradBg {
+    0% {
+        background-position: 100% 0%
+    }
+    100% {
+        background-position: 15% 100%
+    }
+}
+
+@-moz-keyframes gradBg {
+    0% {
+        background-position: 100% 0%
+    }
+    100% {
+        background-position: 15% 100%
+    }
+}
+
+@keyframes gradBg {
+    0% {
+        background-position: 100% 0%
+    }
+    100% {
+        background-position: 15% 100%
+    }
+}
+/* End Custom CSS */

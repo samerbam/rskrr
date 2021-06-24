@@ -1,0 +1,15 @@
+{
+  "name": "tailwindstuff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tailwindcss build css/main.css -o css/output.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^2.1.2"
+  }
+}

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Testing</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="css/output.css">
+        <style>
+            .modal {
+              transition: opacity 0.25s ease;
+            }
+            /* body.modal-active {
+              overflow-x: hidden;
+              overflow-y: visible !important;
+            } */
+          </style>
+    </head>
+    <body class="overflow-hidden">
+        <!-- <nav>
+            <div class="min-w-screen h-screen bg-gray-100 flex items-start px-5 py-5" x-data="{showContextMenu:false}">
+                <div class="relative" @click.away="showContextMenu=false">
+                    <button class="bg-white h-10 w-40 leading-10 text-center text-gray-800 text-xl shadow-md hover:shadow-lg rounded-lg transition-all font-semibold outline-none focus:outline-none" x-on:contextmenu="$event.preventDefault();showContextMenu=!showContextMenu" @click.prevent="showContextMenu=!showContextMenu">Welcome</button>
+                    <div class="absolute mt-12 top-0 left-1 min-w-full w-48 z-30" style="display:none;" x-show="showContextMenu" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+                        <span class="absolute top-0 left-0 w-2 h-2 bg-white transform rotate-45 -mt-1 ml-3 border-gray-300 border-l border-t z-20"></span>
+                        <div class="bg-white overflow-auto rounded-lg shadow-md w-full relative z-10 py-2 border border-gray-300 text-gray-800 text-xs">
+                            <ul class="list-reset">
+                                <li>
+                                    <a href="#" class="px-4 py-1 flex hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100" @click.prevent="showContextMenu=false">View Task</a>
+                                    <a href="#" class="px-4 py-1 flex hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100" @click.prevent="showContextMenu=false">Edit Task</a>
+                                    <a href="#" class="px-4 py-1 flex hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 text-red-500" @click.prevent="showContextMenu=false">Delete Task</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav> -->
+
+        <main id="mainScroller" class="h-screen w-screen scroll-container overflow-scroll">
+            <nav>
+                <div class="absolute mx-5 my-5 rounded-lg bg-gray-100" x-data="{showContextMenu:false}" @click.away="showContextMenu=false">
+                    <button class="bg-white h-10 w-40 leading-10 text-center text-gray-800 text-xl shadow-md hover:shadow-lg rounded-lg transition-all font-semibold outline-none focus:outline-none" x-on:contextmenu="$event.preventDefault();showContextMenu=!showContextMenu" @click.prevent="showContextMenu=!showContextMenu"><div class="gradient-text" id="currentPageViewer">Welcome</div></button>
+                    <div class="absolute mt-12 top-0  min-w-full w-48 z-30" style="display:none;" x-show="showContextMenu" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+                        <!-- <span class="absolute top-0 left-0 w-2 h-2 bg-white transform rotate-45 -mt-1 ml-3 border-gray-300 border-l border-t z-20"></span> -->
+                        <div class="bg-white overflow-auto rounded-lg shadow-md w-full relative z-10 py-2 border border-gray-300 text-gray-800 text-xs">
+                            <ul class="list-reset">
+                                <li>
+                                    <a href="#welcome" class="px-4 py-1 flex hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100" @click="showContextMenu=false">Pages: </a>
+                                    <a href="#about" class="px-4 py-1 flex hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100" @click="showContextMenu=false;SmoothVerticalScrolling(document.getElementById('about'), 275, 'center')">About</a>
+                                </li>
+                            </ul>
+                            <span class="px-4 py-1 flex text-center align-center hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 text-red-500" @click.prevent="showContextMenu=false"><span>Sam © 2021</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+            </nav>
+            
+            <!-- <button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button> -->
+  
+            <!--Modal-->
+            <div class="modal hidden fixed w-full top-4 left-0 flex items-start justify-start">
+              <!-- <div class="modal-overlay absolute w-full h-full opacity-0"></div> -->
+              
+              <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                
+                <!-- <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                  <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                  </svg>
+                  <span class="text-sm">(Esc)</span>
+                </div> -->
+          
+                <!-- Add margin if you want to see some of the overlay behind the modal-->
+                <div class="modal-content py-4 text-left px-6">
+                  <!--Title-->
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="text-2xl font-semibold">Message Sent!</p>
+                      <p class="text-sm font-normal">You will recieve a response as soon as possible.</p>
+                    </div>
+                    <!-- <div class="modal-close cursor-pointer z-50">
+                      <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                      </svg>
+                    </div> -->
+                    <div class="modal-close cursor-pointer flex flex-col items-center text-gray-500 text-sm z-50">
+                      <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                      </svg>
+                      <span class="text-sm">(Esc)</span>
+                    </div>
+                  </div>
+          
+                  <!--Body-->
+                  <!-- <p>Modal content can go here</p>
+                  <p>...</p>
+                  <p>...</p>
+                  <p>...</p>
+                  <p>...</p> -->
+          
+                  <!--Footer-->
+                  <!-- <div class="flex justify-end pt-2">
+                    <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
+                    <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
+                  </div> -->
+                  
+                </div>
+              </div>
+            </div>
+
+            <section id="welcome" class="bg-gray-50 flex min-h-screen scroll-child">
+                <!-- <p class=" flex-initial">Welcome to imsam.ca. here</p> -->
+                <!-- <div class="gradient-text flex-initial">test</div> -->
+                <!-- <div class="self-center"> -->
+
+                    <div class="flex-1 flex flex-col lg:flex-row items-center justify-center">
+                        <h2 class="flex-initial self-center text-center text-4xl">I would like help with my </h2>
+                        <div class="mt-4 lg:mt-0 flex-initial self-center grid lg:ml-4">
+                            <input onfocus="timeoutClearCheck(document.getElementById('animatedPlaceholder'))" id="animatedInput" class="z-10 p-1 bg-transparent rounded-lg row-span-full col-span-full text-3xl outline-none border-4 border-bluegray hover:border-indigo-200 focus:border-indigo-300 active:border-indigo-300">
+                            <input readonly disabled id="animatedPlaceholder" class="p-1 bg-bluegray rounded-lg row-span-full col-span-full text-3xl border-4 border-bluegray" placeholder="Computers">
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-4 lg:mt-0 lg:ml-4 flex-initial self-center h-8 w-8 flex-initial" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        
+                    </div>
+                <!-- </div> -->
+            </section>
+            <!-- <div class="relative w-full h-full">
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 m-4 right-8 left-8 rounded absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" role="alert">
+                    <strong class="font-bold">Message Sent!</strong>
+                    <span class="block sm:inline">You should recieve a response shortly.</span>
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                    </span>
+                </div>
+            </div> -->
+            
+            <section id="about" class="pt-0 bg-gray-50 min-h-screen scroll-child">
+                <!-- TODO: Change out to horizontally scrolling timeline. -->
+                <div class="bg-gray-50 flex items-center justify-center min-h-screen">
+                    <!-- component -->
+                  <div class="container">
+                    <div
+                      class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50"
+                    >
+                      <!-- left -->
+                      <div class="flex flex-row-reverse md:contents">
+                  
+                        <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+                          <h3 class="font-semibold text-lg mb-1">September 2014</h3>
+                          <p class="leading-tight text-justify">
+                            Introduced to Python. My first language. <br><br>
+                  
+                            <a href="#">github.com/samerbam/first-python</a>
+                          </p>
+                        </div>
+                  
+                        <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
+                          <div class="h-full w-6 flex items-center justify-center">
+                            <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
+                          </div>
+                          <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
+                        </div>
+                  
+                      </div>
+                  
+                  
+                      <!-- right -->
+                      <div class="flex md:contents">
+                        <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
+                          <div class="h-full w-6 flex items-center justify-center">
+                            <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
+                          </div>
+                          <div
+                            class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"
+                          ></div>
+                        </div>
+                        <div
+                          class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md"
+                        >
+                          <h3 class="font-semibold text-lg mb-1">September 2016</h3>
+                          <p class="leading-tight text-justify">
+                            Introduced to HTML/CSS/JS. <br><br>
+                  
+                            <a href="#">github.com/samerbam/first-htmlcssjs</a>
+                          </p>
+                        </div>
+                      </div>
+                      <!-- left -->
+                      <div class="flex flex-row-reverse md:contents">
+                        <div
+                          class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md"
+                        >
+                          <h3 class="font-semibold text-lg mb-1">June 2019</h3>
+                          <p class="leading-tight text-justify">
+                            Introduced to Swift.
+                           
+                          </p>
+                        </div>
+                        <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
+                          <div class="h-full w-6 flex items-center justify-center">
+                            <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
+                          </div>
+                          <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
+                        </div>
+                      </div>
+                      <!-- left -->
+                      <div class="flex flex-row-reverse md:contents">
+                        <div
+                          class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md"
+                        >
+                          <h3 class="font-semibold text-lg mb-1">June 2021</h3>
+                          <p class="leading-tight text-justify">
+                            Redesigned my website to look like this.
+                          </p>
+                        </div>
+                        <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
+                          <div class="h-full w-6 flex items-center justify-center">
+                            <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
+                          </div>
+                          <div
+                            class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"
+                          ></div>
+                        </div>
+                      </div>
+                      <!-- right -->
+                      <div class="flex md:contents">
+                        <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
+                          <div class="h-full w-6 flex items-center justify-center">
+                            <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
+                          </div>
+                          <div
+                            class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"
+                          ></div>
+                        </div>
+                        <div
+                          class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md"
+                        >
+                          <h3 class="font-semibold text-lg mb-1">June 2021</h3>
+                          <p class="leading-tight text-justify">
+                            Created the ideal pizza delivery app for myself.<br><br>
+                            
+                            <a href="#">github.com/samerbam/pizza-app</a>
+                          </p>
+                        </div>
+                      </div>
+                     
+                      
+                      <div class="flex flex-row-reverse md:contents">
+                        <div
+                          class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md"
+                        >
+                            <h3 class="font-semibold text-lg mb-1">Present Day</h3>
+                            <p class="leading-tight text-justify">
+                            Awaiting my next big project!
+                            </p>
+                        </div>
+                        <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
+                          <div class="h-full w-6 flex items-center justify-center">
+                            <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
+                          </div>
+                          <div
+                            class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"
+                          ></div>
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
+                  </div>
+                <!-- <div class="self-center items-center justify-center">
+                    <h1>TODO: insert timeline</h1>
+                </div> -->
+            </section>
+
+            <section id="portfolio" class="bg-gray-50 min-h-screen scroll-child flex flex-row items-center justify-start overflow-x-scroll"> <!-- flex items-center justify-center sm:flex-col lg:flex-row --> <!--  flex flex-row items-center justify-center flex-wrap border-4 -->
+                <!-- <p class=" flex-initial">Welcome to imsam.ca. here</p> -->
+                <!-- <div class="gradient-text flex-initial">test</div> -->
+                <!-- <div class="self-center"> -->
+
+                    <!-- <div class="bg-white shadow-lg rounded-lg h-40 w-100 flex flex-row m-2">
+                        <img class="rounded-lg m-4 border-2 border-bluegray" src="assets/rr_ss.png" width="125" height="125">
+                        <div class="mt-4 mb-4">
+                            <h2 class="font-semibold">Ruth Ruttan • Doula & Pilates Specialist</h2><br><br>
+                            <a href="https://ruthruttan.ca" target="_blank">ruthruttan.ca</a>
+                        </div>
+                    </div> -->
+                    <div class="h-2/5 flex flex-row">
+                      <div class="bg-white shadow-lg rounded-lg h-4/5 w-4/5 flex flex-col flex-grow-0 flex-shrink-0 ml-4"> <!--  flex flex-row m-2 -->
+                          <img class="self-center rounded-lg m-4 shadow-md" src="assets/rr_ss.png" width="380" height="380">
+                          <div class="self-center mb-4 ml-4 mr-4">
+                              <h2 class="font-semibold">Ruth Ruttan • Doula & Pilates Specialist</h2><br>
+                              <p>A Short description of the project here. Maybe a max of two lines - this is subject to change.</p><br>
+                              <a href="https://ruthruttan.ca" target="_blank">ruthruttan.ca</a>
+                          </div>
+                      </div>
+                      
+                    </div>
+
+
+                  </section>
+
+            <section id="contact" class="pt-20 bg-gray-50 min-h-screen scroll-child">
+                <div class="flex-1 flex flex-col lg:flex-row items-center justify-center">
+                    <h2 class="flex-initial self-center text-center text-4xl mb-2">Fill out this form to send me a message. </h2>
+                    
+                    <!-- <div class="mt-4 lg:mt-0 flex-initial self-center grid lg:ml-4">
+                        <input onfocus="timeoutClearCheck(document.getElementById('animatedPlaceholder'))" id="animatedInput" class="z-10 bg-transparent row-span-full col-span-full text-4xl outline-none border-b-4 border-indigo-300 hover:border-indigo-400 focus:border-indigo-500 active:border-indigo-500">
+                        <input readonly id="animatedPlaceholder" class="bg-transparent row-span-full col-span-full text-4xl border-b-4 border-indigo-300 hover:border-indigo-400 focus:border-indigo-500 active:border-indigo-500" placeholder="Computers">
+                    </div> -->
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="mt-4 lg:mt-0 lg:ml-4 flex-initial self-center h-8 w-8 flex-initial" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg> -->
+                    
+                </div>
+                
+                <div class="flex self-center items-center justify-center">
+                    
+                    <!-- <label>This</label> -->
+                    <!-- <input id="animatedPlaceholder" class="p-1 bg-bluegray rounded-lg row-span-full col-span-full text-3xl outline-none focus:border-4 focus:border-light-blue-200 active:border-4 active:border-light-blue-500" placeholder="Computers"> border-b-4 border-indigo-300 hover:border-indigo-400 focus:border-indigo-500 active:border-indigo-500 -->
+                    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                    <form action="https://formspree.io/f/xrgrkqvp" method="POST" name="contact-form" class="flex flex-col w-3/4" target="dummyframe">
+                        
+                        <!-- <div> -->
+                            <div class="self-center w-full flex flex-row self-center items-center justify-center">
+                                <input id="" class="self-center w-1/2 m-0.5 z-10 p-1 bg-bluegray rounded-lg row-span-full col-span-full text-3xl outline-none border-4 border-bluegray hover:border-indigo-200 focus:border-indigo-300 active:border-indigo-300" type="text" name="Full Name" placeholder="Full Name">
+                                <input id="" class="self-center w-6/12 m-0.5 z-10 p-1 bg-bluegray rounded-lg row-span-full col-span-full text-3xl outline-none border-4 border-bluegray hover:border-indigo-200 focus:border-indigo-300 active:border-indigo-300" type="email" name="_replyto" placeholder="Email"><br>
+                            </div>
+                            <input id="" class="self-center w-full m-1 mt-6 z-10 p-1 bg-bluegray rounded-lg row-span-full col-span-full text-3xl outline-none border-4 border-bluegray hover:border-indigo-200 focus:border-indigo-300 active:border-indigo-300" type="text" name="Subject" placeholder="Subject">
+                            <textarea id="" class="self-center w-full mt-1 mb-6 h-96 z-10 p-1 bg-bluegray rounded-lg row-span-full col-span-full text-3xl outline-none border-4 border-bluegray hover:border-indigo-200 focus:border-indigo-300 active:border-indigo-300" name="Message" placeholder="Message"></textarea>
+                            <input id="" class="self-center w-1/2 h-14 m-0.5 z-10 p-1 text-white bg-indigo-400 rounded-lg row-span-full col-span-full text-3xl outline-none hover:bg-indigo-500" type="reset" onclick='document.forms["contact-form"].submit(); toggleModal(act="show"); setTimeout(function() {toggleModal(act="hide")}, 2000)' value="Name">
+                            <!-- <input type='reset' and add onclick='document.forms["myForm"].submit();'> -->
+                        <!-- </div> -->
+                    </form>
+                </div>
+            </section>
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
