@@ -1,8 +1,8 @@
 const pageNames = {
     0: "Welcome",
     // 1: "About",
-    2: "Portfolio",
-    3: "Contact"
+    1: "Portfolio",
+    2: "Contact"
 }
 
 let prevPage = ""
