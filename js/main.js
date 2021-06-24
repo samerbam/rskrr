@@ -1,6 +1,6 @@
 const pageNames = {
     0: "Welcome",
-    1: "About",
+    // 1: "About",
     2: "Portfolio",
     3: "Contact"
 }
