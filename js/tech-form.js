@@ -158,6 +158,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let btn = document.getElementById('sBut');
 
+var form = document.getElementById("tech-form");
+	    
+async function handleSubmit(event) {
+  event.preventDefault();
+  var status = document.getElementById("my-form-status");
+  var data = new FormData(event.target);
+
+
+
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+        'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+    	btn.blur();
+    	btn.classList.add('success');
+  		btn.classList.remove('spin');
+  		btn.disabled = false;
+  		formObj.reset()
+
+      status.innerHTML = "Thanks for your submission!";
+      form.reset()
+    } else {
+
+    	btn.blur()
+    	btn.classList.add('error');
+  		btn.classList.remove('spin');
+  		btn.disabled = false;
+
+      response.json().then(data => {
+        if (Object.hasOwn(data, 'errors')) {
+          status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+        } else {
+          status.innerHTML = "Oops! There was a problem submitting your form"
+        }
+      })
+    }
+  }).catch(error => {
+		btn.blur()
+  	btn.classList.add('error');
+		btn.classList.remove('spin');
+		btn.disabled = false;
+    status.innerHTML = "Oops! There was a problem submitting your form"
+  });
+}
+form.addEventListener("submit", handleSubmit)
+
+
+
 btn.addEventListener('click', function () {
   // form submission starts
   // button is disabled
@@ -166,56 +218,7 @@ btn.addEventListener('click', function () {
 
   btn.classList.add('spin');
   btn.disabled = true;
-  
-	var form = document.getElementById("tech-form");
-	    
-	    async function handleSubmit(event) {
-	      event.preventDefault();
-	      var status = document.getElementById("my-form-status");
-	      var data = new FormData(event.target);
-
-
-
-	      fetch(event.target.action, {
-	        method: form.method,
-	        body: data,
-	        headers: {
-	            'Accept': 'application/json'
-	        }
-	      }).then(response => {
-	        if (response.ok) {
-	        	btn.blur();
-	        	btn.classList.add('success');
-		    		btn.classList.remove('spin');
-		    		btn.disabled = false;
-		    		formObj.reset()
-
-	          status.innerHTML = "Thanks for your submission!";
-	          form.reset()
-	        } else {
-
-	        	btn.blur()
-	        	btn.classList.add('error');
-		    		btn.classList.remove('spin');
-		    		btn.disabled = false;
-
-	          response.json().then(data => {
-	            if (Object.hasOwn(data, 'errors')) {
-	              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-	            } else {
-	              status.innerHTML = "Oops! There was a problem submitting your form"
-	            }
-	          })
-	        }
-	      }).catch(error => {
-      		btn.blur()
-        	btn.classList.add('error');
-	    		btn.classList.remove('spin');
-	    		btn.disabled = false;
-	        status.innerHTML = "Oops! There was a problem submitting your form"
-	      });
-	    }
-	    form.addEventListener("submit", handleSubmit)
+}
 
  	
 
