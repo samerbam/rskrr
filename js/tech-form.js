@@ -209,7 +209,6 @@ async function handleSubmit(event) {
 form.addEventListener("submit", handleSubmit)
 
 
-
 btn.addEventListener('click', function () {
   // form submission starts
   // button is disabled
@@ -218,7 +217,8 @@ btn.addEventListener('click', function () {
 
   btn.classList.add('spin');
   btn.disabled = true;
-}
+  
+}, false);
 
  	
 
@@ -278,4 +278,4 @@ btn.addEventListener('click', function () {
   //   btn.disabled = false;
   //   // btn.form.firstElementChild.disabled = false;
   // }, 4000);
-}, false);
+// }, false);
