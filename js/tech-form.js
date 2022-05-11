@@ -167,54 +167,101 @@ btn.addEventListener('click', function () {
   btn.classList.add('spin');
   btn.disabled = true;
   
-  // This disables the whole form via the fieldset
-  // btn.form.firstElementChild.disabled = true;
-  
-  // this setTimeout call mimics some asyncronous action
-  // you would have something else here
-  	var formObj = document.getElementById("tech-form")
-	var xhr = new XMLHttpRequest();
-	// xhr.open("POST", "https://tech-form.imsam.ca"); http://127.0.0.1:8787/
-	xhr.open("POST", "https://tech-form.imsam.ca");
-	xhr.onload = function(event){ 
-	    // alert("Success, server responded with: " + event.target.status); // raw response
-	    // console.log(event.target.status);
-	    btn.blur();
-	    switch (event.target.status) {
-	    	case 200:
-	    		btn.classList.add('success');
-	    		btn.classList.remove('spin');
-	    		btn.disabled = false;
-	    		formObj.reset()
-	    		break;
-	    	default:
-	    		btn.classList.add('error');
-	    		btn.classList.remove('spin');
-	    		btn.disabled = false;
-	    }
+	var form = document.getElementById("tech-form");
+	    
+	    async function handleSubmit(event) {
+	      event.preventDefault();
+	      var status = document.getElementById("my-form-status");
+	      var data = new FormData(event.target);
 
-	    // btn.classList.add('success');
-	    // btn.classList.remove('spin');
-	    // btn.disabled = false;
-	}; 
-	xhr.onerror = function (event) {
-		// alert("Error, server responded with: " + event.target.response); // raw response\
-		btn.blur();
-		btn.classList.add('error');
-		btn.classList.remove('spin');
-		btn.disabled = false;
-	}
-	xhr.onabort = function (event) {
-		// alert("Abort, server responded with: " + event.target.response); // raw response
-		btn.blur();
-		btn.classList.add('error');
-		btn.classList.remove('spin');
-		btn.disabled = false;
-	}
-	// or onerror, onabort
-	var formData = new FormData(formObj);
-	console.log(formData)
-	xhr.send(formData);
+
+
+	      fetch(event.target.action, {
+	        method: form.method,
+	        body: data,
+	        headers: {
+	            'Accept': 'application/json'
+	        }
+	      }).then(response => {
+	        if (response.ok) {
+	        	btn.blur();
+	        	btn.classList.add('success');
+		    		btn.classList.remove('spin');
+		    		btn.disabled = false;
+		    		formObj.reset()
+
+	          status.innerHTML = "Thanks for your submission!";
+	          form.reset()
+	        } else {
+
+	        	btn.blur()
+	        	btn.classList.add('error');
+		    		btn.classList.remove('spin');
+		    		btn.disabled = false;
+
+	          response.json().then(data => {
+	            if (Object.hasOwn(data, 'errors')) {
+	              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+	            } else {
+	              status.innerHTML = "Oops! There was a problem submitting your form"
+	            }
+	          })
+	        }
+	      }).catch(error => {
+      		btn.blur()
+        	btn.classList.add('error');
+	    		btn.classList.remove('spin');
+	    		btn.disabled = false;
+	        status.innerHTML = "Oops! There was a problem submitting your form"
+	      });
+	    }
+	    form.addEventListener("submit", handleSubmit)
+
+ 	
+
+
+ // 	var formObj = document.getElementById("tech-form")
+	// var xhr = new XMLHttpRequest();
+	// // xhr.open("POST", "https://tech-form.imsam.ca"); http://127.0.0.1:8787/
+	// xhr.open("POST", "https://tech-form.imsam.ca");
+	// xhr.onload = function(event){ 
+	//     // alert("Success, server responded with: " + event.target.status); // raw response
+	//     // console.log(event.target.status);
+	//     btn.blur();
+	//     switch (event.target.status) {
+	//     	case 200:
+	//     		btn.classList.add('success');
+	//     		btn.classList.remove('spin');
+	//     		btn.disabled = false;
+	//     		formObj.reset()
+	//     		break;
+	//     	default:
+	//     		btn.classList.add('error');
+	//     		btn.classList.remove('spin');
+	//     		btn.disabled = false;
+	//     }
+
+	//     // btn.classList.add('success');
+	//     // btn.classList.remove('spin');
+	//     // btn.disabled = false;
+	// }; 
+	// xhr.onerror = function (event) {
+	// 	// alert("Error, server responded with: " + event.target.response); // raw response\
+	// 	btn.blur();
+	// 	btn.classList.add('error');
+	// 	btn.classList.remove('spin');
+	// 	btn.disabled = false;
+	// }
+	// xhr.onabort = function (event) {
+	// 	// alert("Abort, server responded with: " + event.target.response); // raw response
+	// 	btn.blur();
+	// 	btn.classList.add('error');
+	// 	btn.classList.remove('spin');
+	// 	btn.disabled = false;
+	// }
+	// var formData = new FormData(formObj);
+	// console.log(formData)
+	// xhr.send(formData);
 
 
   // window.setTimeout(function () {
