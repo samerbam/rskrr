@@ -12,7 +12,7 @@ eval declare -A percents=(
 while IFS=' ' read line; do for i in "${!percents[@]}"; do \
     line="${line//"$i"/"${percents["$i"]}"}"; done; echo "$line"; done <stats_template.html > stats.html
 
-sed -i "s/curTime/$(date '+%a %d %b %H:%M:%S')/g" stats.html
+gsed -i "s/curTime/$(date '+%a %d %b %H:%M:%S')/g" stats.html
 
 echo "git add ."
 echo "$(git add .)"
