@@ -5,7 +5,7 @@
 cMessage="$1"
 
 eval declare -A percents=(
-	"$(github-linguist | awk '/%[[:space:]]/ { gsub(/CSS/,"cssPercent",$3); gsub(/HTML/,"htmlPercent",$3); gsub(/JavaScript/,"jsPercent",$3); printf "[\"%s\"]=\"%s\"\n", $3, $1 }')"
+	"$(github-linguist | awk '/%[[:space:]]/ { gsub(/CSS/,"cssPercent",$3); gsub(/HTML/,"htmlPercent",$3); gsub(/JavaScript/,"jsPercent",$3); gsub(/Shell/,"shellPercent",$3); printf "[\"%s\"]=\"%s\"\n", $3, $1 }')"
 )
 
 # echo "$(github-linguist | awk '/%[[:space:]]/ { gsub(/CSS/,"cssPercent",$3); gsub(/HTML/,"htmlPercent",$3); gsub(/JavaScript/,"jsPercent",$3); printf "[\"%s\"]=\"%s\"\n", $3, $1 }')";
