@@ -8,7 +8,7 @@ eval declare -A percents=(
 	"$(github-linguist | awk '/%[[:space:]]/ { gsub(/CSS/,"cssPercent",$2); gsub(/HTML/,"htmlPercent",$2); gsub(/JavaScript/,"jsPercent",$2); printf "[\"%s\"]=\"%s\"\n", $2, $1 }')"
 )
 
-echo "$percents";
+echo "${$percents}";
 
 
 while IFS=' ' read line; do for i in "${!percents[@]}"; do \
