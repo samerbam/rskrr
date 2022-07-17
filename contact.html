@@ -85,7 +85,7 @@
 
 			<!-- <form id="tech-form" > -->
 			<div id="my-form-status"></div>
-			<form action="https://formspree.io/f/xrgrkqvp" method="POST" name="contact-form" id="tech-form" target="dummyframe">
+			<form action="https://formspree.io/f/xrgrkqvp" method="POST" name="contact-form" id="contact-form" target="dummyframe">
 				<!-- <input autocomplete="false" name="hidden" type="text" class="hidden"> -->
 <!--				<div id="tech-form">-->
 					<label><h3 style="display:inline;">Full Name:</h3></label>
@@ -110,9 +110,9 @@
 					<label><h3>Issue: </h3></label>
 					<textarea name="issue" class="expandableTextArea" ></textarea><br>
 
-					<label><h3 style="display:inline;">Prefered Contact Method:</h3></label>
+					<label><h3 style="display:inline;" for="Prefered Contact Method">Prefered Contact Method:</h3></label>
 					<div class="dropdown">
-						<input class="hiddenInput" id="pContact" name="pContact" value="">
+						<input class="hiddenInput" id="pContact" name="Prefered Contact Method" value="">
 						<button type="button" onclick="dDownToggle(this.dataset.id)" class="dropbtn" data-id="2">Choose</button>
 						<div id="myDropdown_2" class="dropdown-content" data-id="2">
 							<a href="#home" onclick="changeSelection(this)">Email</a>
@@ -121,14 +121,14 @@
 						</div>
 					</div><br>
 					<div class="paddingDiv">
-						<label class="hidePhone"><b>Phone Number:</b></label>
-						<input class="hidePhone" id="phoneNumber" placeholder="+1 (___) ___-____" data-slots="_" name="contactmethod" autocomplete="off">
+						<label class="hidePhone" for="Phone Number"><b>Phone Number:</b></label>
+						<input class="hidePhone" id="phoneNumber" placeholder="+1 (___) ___-____" data-slots="_" name="Phone Number">
 						<label class="hideEmail"><b>Email:</b></label>
 						<!-- <input id="emailInput" name="contactmethod"><br> -->
 						<!-- <span class="input" role="textbox" contenteditable>99</span> -->
-						<label class="input-sizer hideEmail">
+						<label class="input-sizer hideEmail" for="Email">
 							<!-- <span><b>Email: </b></span> -->
-							<input type="text" onInput="this.parentNode.dataset.value = this.value" size="9" placeholder="Your Email" style="display: inline-grid;" autocomplete="off">
+							<input type="text" onInput="this.parentNode.dataset.value = this.value" size="9" placeholder="Your Email" style="display: inline-grid;" name="Email">
 						</label>
 
 					</div>
@@ -171,7 +171,7 @@
 			</div>
 					 -->	
 			
-			<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+			<!-- <iframe name="dummyframe" id="dummyframe" style="display: block;"></iframe> -->
 		</main>
 		
 		<footer class="footer">

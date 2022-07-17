@@ -180,6 +180,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         console.log(e.target)
 	});
+
+
+
+
 })
 
 // document.addEventListener('onautocomplete', function (e) {
@@ -192,15 +196,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let btn = document.getElementById('sBut');
 
-var form = document.getElementById("tech-form");
+var form = document.getElementById("contact-form");
 	    
 async function handleSubmit(event) {
+
+	btn.classList.remove('success');
+  btn.classList.remove('error');
+
+  btn.classList.add('spin');
+  btn.disabled = true;
+
 	console.log('test')
   event.preventDefault();
   var status = document.getElementById("my-form-status");
+  console.log(event.target)
   var data = new FormData(event.target);
+ 	console.log(data)
 
-  console.log(target)
+  // console.log(target)
   console.log('here')
 
   fetch(event.target.action, {
@@ -215,7 +228,7 @@ async function handleSubmit(event) {
     	btn.classList.add('success');
   		btn.classList.remove('spin');
   		btn.disabled = false;
-  		formObj.reset()
+  		form.reset()
 
       status.innerHTML = "Thanks for your submission!";
       form.reset()
@@ -229,8 +242,10 @@ async function handleSubmit(event) {
       response.json().then(data => {
         if (Object.hasOwn(data, 'errors')) {
           status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+          console.log(data)
         } else {
           status.innerHTML = "Oops! There was a problem submitting your form"
+          console.log(data)
         }
       })
     }
@@ -240,22 +255,24 @@ async function handleSubmit(event) {
 		btn.classList.remove('spin');
 		btn.disabled = false;
     status.innerHTML = "Oops! There was a problem submitting your form"
+    console.log(error)
   });
   console.log('finished')
 }
+console.log('test')
 form.addEventListener("submit", handleSubmit)
 
 
-btn.addEventListener('click', function () {
-  // form submission starts
-  // button is disabled
-  btn.classList.remove('success');
-  btn.classList.remove('error');
+// btn.addEventListener('click', function () {
+//   // form submission starts
+//   // button is disabled
+//   btn.classList.remove('success');
+//   btn.classList.remove('error');
 
-  btn.classList.add('spin');
-  btn.disabled = true;
+//   btn.classList.add('spin');
+//   btn.disabled = true;
   
-}, false);
+// }, true);
 
  	
 
