@@ -96,9 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	emptyFill = function() {
 		/* If the elements value is empty fill it with placeholder. */
 		setSelLoc()
+		var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
+		el.setSelectionRange(i, i)
+		// console.log(el.value)
 		if (el.value == "") {
 			el.value = el.placeholder
+			el.focus()
+			el.setSelectionRange(4, 4)
+			// var i = el.value.indexOf("_") == -1 ? el.value.length : el.value.indexOf("_")
+			// el.setSelectionRange(i, i)
 		}
+		setSelLoc()
 	},
 	tabFocus = function(e) {
 		/* Prevent selection of all text when using tab to select input box. 
@@ -152,6 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	el.onkeydown = onDelete;
 	el.onkeyup = tabFocus;
 	el.onclick = emptyFill;
+	el.onfocus = emptyFill;
+	el.onselect = emptyFill;
+	console.log(el)
 })
 
 
