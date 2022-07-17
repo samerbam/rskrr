@@ -15,6 +15,8 @@
 		<link rel="stylesheet" href="css/styles-global.css">
 		<link rel="stylesheet" href="css/styles-form.css">
 
+		<script src="https://unpkg.com/detect-autofill/dist/detect-autofill.js"></script>
+
 <!--		<link rel="stylesheet" href="css/dropdown.js">-->
 
 		</head>
@@ -50,7 +52,7 @@
 				<ul class="nav__links">
 					<li><a href="/pricing" class="link-hover"><!-- Website Design --></a></li>
 					<!-- <li><a href="/pricing" class="link-hover">Website Design</a></li> -->
-					<li><a href="/tech" class="link-hover">Technical Help</a></li>
+					<li><a href="/contact" class="link-hover">Contact Me</a></li>
 <!-- 					<li><a href="/tech" class="link-hover">Website Support</a></li>
  -->					<li>
 						<div class="linkdown">
@@ -84,6 +86,7 @@
 			<!-- <form id="tech-form" > -->
 			<div id="my-form-status"></div>
 			<form action="https://formspree.io/f/xrgrkqvp" method="POST" name="contact-form" id="tech-form" target="dummyframe">
+				<!-- <input autocomplete="false" name="hidden" type="text" class="hidden"> -->
 <!--				<div id="tech-form">-->
 					<label><h3 style="display:inline;">Full Name:</h3></label>
 					<input name="name" id="full-name" autocomplete="name"><br>
@@ -125,7 +128,7 @@
 						<!-- <span class="input" role="textbox" contenteditable>99</span> -->
 						<label class="input-sizer hideEmail">
 							<!-- <span><b>Email: </b></span> -->
-							<input type="text" onInput="this.parentNode.dataset.value = this.value" size="9" placeholder="Your Email" style="display: inline-grid;" autocomplete="email">
+							<input type="text" onInput="this.parentNode.dataset.value = this.value" size="9" placeholder="Your Email" style="display: inline-grid;" autocomplete="off">
 						</label>
 
 					</div>
@@ -180,7 +183,7 @@
 		 <script src="js/tech-form.js"></script> <!-- Javascript Logic for submittiing the form. -->
 		<!-- Only load this page if javascript is enabled. Unfortunately hCaptcha requires javascript -->
 		<script>window.onload=function(){document.getElementById('jscript_show').style.display='block';}</script>
-		<script src="https://hcaptcha.com/1/api.js" async defer></script> <!-- Prevent Form Bot Attacks. -->
+		<!-- <script src="https://hcaptcha.com/1/api.js" async defer></script> <!-- Prevent Form Bot Attacks. --> -->
 
 	</body>
 </html>

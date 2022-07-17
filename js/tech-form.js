@@ -155,6 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		event.preventDefault()
 		return false
 	};
+
+	// auto_fill = function(event) {
+	// 	console.log('here')
+	// 	console.log(event)
+	// };
 	
 	el.onkeypress = phone_mask;
 	el.onkeydown = onDelete;
@@ -162,8 +167,26 @@ document.addEventListener('DOMContentLoaded', function() {
 	el.onclick = emptyFill;
 	el.onfocus = emptyFill;
 	el.onselect = emptyFill;
-	console.log(el)
+	// el.autocomplete = auto_fill;
+	console.log(el);
+
+	document.addEventListener('onautocomplete', function (e) {
+        // console.log('autocomplete');
+        if (e.target === el) {
+        	curVal = e.target.value;
+
+        	el.value = "+1 (" + curVal.slice(0, 3) + ") " + curVal.slice(3, 6) + "-" + curVal.slice(6,10);
+        	console.log('e.target == el')
+        }
+        console.log(e.target)
+	});
 })
+
+// document.addEventListener('onautocomplete', function (e) {
+//         // console.log('autocomplete');
+//         if e.target === el
+//         console.log(e.target)
+// })
 
 
 
@@ -172,11 +195,13 @@ let btn = document.getElementById('sBut');
 var form = document.getElementById("tech-form");
 	    
 async function handleSubmit(event) {
+	console.log('test')
   event.preventDefault();
   var status = document.getElementById("my-form-status");
   var data = new FormData(event.target);
 
-
+  console.log(target)
+  console.log('here')
 
   fetch(event.target.action, {
     method: form.method,
@@ -216,6 +241,7 @@ async function handleSubmit(event) {
 		btn.disabled = false;
     status.innerHTML = "Oops! There was a problem submitting your form"
   });
+  console.log('finished')
 }
 form.addEventListener("submit", handleSubmit)
 

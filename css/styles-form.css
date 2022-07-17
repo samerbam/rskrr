@@ -15,10 +15,20 @@
 
 #phoneNumber {
 	/*display: none;*/
-	color: #ccc;
+	/*color: #ccc;
 	background-color: #222;
 	border: none;
-	font-size: 1.5em;
+	font-size: 1.5em;*/
+  background-color: #3d3d3d;
+  color: #ccc;
+  line-height: 1.5em;
+  padding: 0.25em;
+  border-style: solid;
+    border-width: 2px;
+  border-color: #222;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.25em;
 	/*-webkit-touch-callout: none;  iOS Safari 
 	  -webkit-user-select: none;  Safari 
 	   -khtml-user-select: none;  Konqueror HTML 
@@ -46,6 +56,18 @@
 	background-color: #3d3d3d;
 	color: white;
 }
+
+
+/*background-color: #3d3d3d;
+color: white;
+line-height: 1.5em;
+padding: 0.25em;
+border-style: solid;
+border-width: 2px;
+border-color: #222;
+border-radius: 5px;
+outline: none;
+font-size: 1.25em;*/
 
 #formSubmit {
 	position: relative;
@@ -80,6 +102,7 @@
 	border-color: #222;
 	border-radius: 5px;
 	outline: none;
+  font-size: 1.25em;
 	/*width: 15em;*/
 }
 
@@ -224,22 +247,35 @@ button,
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border: none;
+  /*border: none;
   color: #ccc;
-  font-size: 1.5em;
+  font-size: 1.5em;*/
+  background-color: #3d3d3d;
+  color: white;
+  line-height: 1.5em;
+  padding: 0.25em;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #222;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.25em;
+  min-width: 275px;
+
 }
+
 .input-sizer input {
-	border-bottom: 2px solid #777;
+	/*border-bottom: 2px solid #777;*/
 }
 
 .input-sizer input:focus {
-	border-bottom: 2px solid white;
-	color: white;
+	/*border-bottom: 2px solid white;*/
+  border-color: #0088a9;
 }
 
 
 .input-sizer::after {
-  content: attr(data-value) " ";
+  content: attr(data-value) "   ";
   visibility: hidden;
   white-space: pre-wrap;
   height: 0;
