@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>imsam - Coming Soon</title>
+	<title>coming soon - imsam</title>
 	<link rel="stylesheet" href="css/sharetech.css">
 	<style type="text/css">
 		* {
@@ -22,24 +22,22 @@
 		}
 	</style>
 
+	<!-- Only show back button if js is enabled. -->
+	<noscript><style> .jsonly { display: none } </style></noscript>
+
 </head>
 	<body>
 			<div class="center">
 				<h1>Coming Soon.</h1>
-				<!-- <h2>Click here to head back to the previous page you were on.</h2>
-				<h3></h3> -->
 				<h2>
 					Head back to the main page by clicking
 					<a style="color:#0088a9" href="https://imsam.ca">Here</a>
 				</h2>
 
-				<!-- <h2>Click <a style="color:#0088a9" href="https://imsam.ca">Here</a> to head back to the previous page you were on.</h2> -->
-
-				<h2>
-					Head back to the page you were on by clicking
-					<a style="color:#0088a9" href="https://imsam.ca">Here</a>
+				<h2 class="jsonly">
+					Head back to the page you were on by clicking 
+					<a style="color:#0088a9" onclick="history.back()" href="#">Here</a>
 				</h2>
-
 			</div>
 	</body>
 </html>
