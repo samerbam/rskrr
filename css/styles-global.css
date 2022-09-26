@@ -222,3 +222,19 @@ footer{
 #coming__soon {
 	text-align: center;
 }
+
+@media screen and (max-width:755px) { 
+	main {
+		padding: 5%;
+	}
+	.nav__links a {
+		padding-left: 4px;
+		padding-right: 0px;
+	}
+	.nav__links li {
+  	padding: 0px 10px;
+	}
+	.linkdown-content {
+		right: 0;
+	}
+}

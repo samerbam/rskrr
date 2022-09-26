@@ -25,6 +25,14 @@
 	line-height: 1em;
 }
 
+
+
+@media screen and (max-width:755px) {
+	#langUsed {
+		font-size: 1.05em;
+	}
+}
+
 /* Used in stats.html */
 /*.subtext {
 	color: gray;
