@@ -52,10 +52,12 @@ a {
 	cursor: pointer;
 }
 
+
 footer{
 	height:50px;
-	background:white;
+/*	background:white;*/
 	margin-top:auto; 
+	line-height: 50px;
 }
 
 .subtext {
@@ -67,12 +69,13 @@ footer{
 	color: white;
 	text-align: center;
 	font-size: 12px;
-	position:absolute;
+/*	position:absolute;*/
 /*   bottom: 1%;*/
 /*	padding-top: 1%;*/
 	left: 50%;
-	transform:translateX(-50%);
-	margin-top: -50px;
+/*	transform:translateX(-50%);*/
+/*	margin-top: -50px;*/
+	bottom: 0px;
 }
 
 .logo {
