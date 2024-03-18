@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
 ((!$#)) && echo No commit message, command ignored! && exit 1
 
