@@ -1,5 +1,4 @@
 #!/bin/bash
 
-brew install bash
-brew install cmake pkg-config icu4c
+brew install bash gsed cmake pkg-config icu4c
 sudo gem install github-linguist
